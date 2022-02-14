@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Template">
+    <test name="TemplateTest">
+        <classes>
+            <class name="com.github.viise.zhurnal.tml.TmlBasicTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlChildTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlClassTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlDateTimeTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlDebugTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlDurationTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlErrorTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlHttpTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlInfoTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlMsgTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlRootTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlSqlTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlThreadTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlTraceTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlWarnTest" />
+        </classes>
+    </test>
+</suite>

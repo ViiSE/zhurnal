@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TmlSql.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.github.viise.zhurnal:zhurnal</a> &gt; <a href="index.source.html" class="el_package">com.github.viise.zhurnal.tml</a> &gt; <span class="el_source">TmlSql.java</span></div><h1>TmlSql.java</h1><pre class="source lang-java linenums">package com.github.viise.zhurnal.tml;
+
+import com.github.viise.zhurnal.Template;
+
+import java.sql.SQLException;
+
+public final class TmlSql implements Template {
+
+    private final Integer errorCode;
+    private final String sqlState;
+    private final String message;
+
+<span class="fc" id="L13">    public TmlSql(Integer errorCode, String sqlState, String message) {</span>
+<span class="fc" id="L14">        this.errorCode = errorCode;</span>
+<span class="fc" id="L15">        this.sqlState = sqlState;</span>
+<span class="fc" id="L16">        this.message = message;</span>
+<span class="fc" id="L17">    }</span>
+
+    public TmlSql(SQLException slqEx) {
+<span class="fc" id="L20">        this(slqEx.getErrorCode(), slqEx.getSQLState(), slqEx.getMessage());</span>
+<span class="fc" id="L21">    }</span>
+
+    @Override
+    public String create() {
+<span class="fc" id="L25">        return new TmlRoot(</span>
+                &quot;sql&quot;,
+                new TmlChild(
+                        &quot;error_code&quot;,
+                        errorCode
+                ),
+                new TmlChild(
+                        &quot;sql_state&quot;,
+                        sqlState
+                ),
+                new TmlChild(
+                        &quot;message&quot;,
+                        message
+                )
+<span class="fc" id="L39">        ).create();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

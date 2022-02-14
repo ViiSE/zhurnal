@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="TestSuite" time="0.603" tests="189" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="gopherProxySet" value="false"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/viise/projects/zhurnal/target/test-classes:/Users/viise/projects/zhurnal/target/classes:/Users/viise/.m2/repository/com/github/javafaker/javafaker/1.0.2/javafaker-1.0.2.jar:/Users/viise/.m2/repository/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar:/Users/viise/.m2/repository/org/yaml/snakeyaml/1.23/snakeyaml-1.23-android.jar:/Users/viise/.m2/repository/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar:/Users/viise/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar:/Users/viise/.m2/repository/org/testng/testng/7.5/testng-7.5.jar:/Users/viise/.m2/repository/com/google/code/findbugs/jsr305/3.0.1/jsr305-3.0.1.jar:/Users/viise/.m2/repository/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.jar:/Users/viise/.m2/repository/com/beust/jcommander/1.78/jcommander-1.78.jar:/Users/viise/.m2/repository/org/webjars/jquery/3.5.1/jquery-3.5.1.jar:"/>
+    <property name="java.vm.vendor" value="BellSoft"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://bell-sw.com/"/>
+    <property name="user.timezone" value="Asia/Vladivostok"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/lib"/>
+    <property name="sun.java.command" value="/Users/viise/projects/zhurnal/target/surefire/surefirebooter2436369888961398023.jar /Users/viise/projects/zhurnal/target/surefire 2022-02-15T03-20-46_698-jvmRun1 surefire1573023116279208262tmp surefire_0212313958859364513tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="surefire.test.class.path" value="/Users/viise/projects/zhurnal/target/test-classes:/Users/viise/projects/zhurnal/target/classes:/Users/viise/.m2/repository/com/github/javafaker/javafaker/1.0.2/javafaker-1.0.2.jar:/Users/viise/.m2/repository/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar:/Users/viise/.m2/repository/org/yaml/snakeyaml/1.23/snakeyaml-1.23-android.jar:/Users/viise/.m2/repository/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar:/Users/viise/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar:/Users/viise/.m2/repository/org/testng/testng/7.5/testng-7.5.jar:/Users/viise/.m2/repository/com/google/code/findbugs/jsr305/3.0.1/jsr305-3.0.1.jar:/Users/viise/.m2/repository/org/slf4j/slf4j-api/1.7.32/slf4j-api-1.7.32.jar:/Users/viise/.m2/repository/com/beust/jcommander/1.78/jcommander-1.78.jar:/Users/viise/.m2/repository/org/webjars/jquery/3.5.1/jquery-3.5.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/viise"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre"/>
+    <property name="basedir" value="/Users/viise/projects/zhurnal"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/Users/viise/projects/zhurnal/target/surefire/surefirebooter2436369888961398023.jar:/Users/viise/.m2/repository/org/jacoco/org.jacoco.agent/0.8.7/org.jacoco.agent-0.8.7-runtime.jar"/>
+    <property name="sun.boot.class.path" value="/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/lib/resources.jar:/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/lib/rt.jar:/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/lib/sunrsasign.jar:/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/lib/jsse.jar:/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/lib/jce.jar:/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/lib/charsets.jar:/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/lib/jfr.jar:/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/classes"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="1.8.0_312-b07"/>
+    <property name="user.name" value="viise"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="12.2"/>
+    <property name="java.endorsed.dirs" value="/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/Users/viise/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://bell-sw.com/support"/>
+    <property name="java.io.tmpdir" value="/var/folders/15/50wtdwk12zg7r1bc6l8kr2rh0000gn/T/"/>
+    <property name="java.version" value="1.8.0_312"/>
+    <property name="user.dir" value="/Users/viise/projects/zhurnal"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/Users/viise/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="BellSoft"/>
+    <property name="java.vm.version" value="25.312-b07"/>
+    <property name="java.ext.dirs" value="/Users/viise/Library/Java/Extensions:/Users/viise/.sdkman/candidates/java/8.0.312-librca/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+  </properties>
+  <testcase name="print_ctor_1" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0.023">
+    <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+]]></system-err>
+  </testcase>
+  <testcase name="print_ctor_10" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_11" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_12" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_13" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_14" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_15" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_16" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0.001"/>
+  <testcase name="print_ctor_17" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0.001"/>
+  <testcase name="print_ctor_18" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_19" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0.001"/>
+  <testcase name="print_ctor_1_fullName" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_2" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0.001"/>
+  <testcase name="print_ctor_20" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_21" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_22" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_3" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_4" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0.001"/>
+  <testcase name="print_ctor_5" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_6" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_7" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0.001"/>
+  <testcase name="print_ctor_8" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print_ctor_9" classname="com.github.viise.zhurnal.lg.LgBasicTest" time="0"/>
+  <testcase name="print" classname="com.github.viise.zhurnal.lg.LgConsoleTest" time="0.001">
+    <system-out><![CDATA[[INFO] [2022-02-15T03:20:47.524] [LgInfo] [MESSAGE Hello, log!]
+]]></system-out>
+  </testcase>
+  <testcase name="print" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0.002"/>
+  <testcase name="print_ctor_1" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0.001"/>
+  <testcase name="print_ctor_10" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_11" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_12" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0.001"/>
+  <testcase name="print_ctor_13" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_14" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_15" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0.001"/>
+  <testcase name="print_ctor_16" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_17" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_18" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0.001"/>
+  <testcase name="print_ctor_19" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_1_fullName" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_2" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_20" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_21" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_22" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_3" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_4" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0.001"/>
+  <testcase name="print_ctor_5" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_6" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0.001"/>
+  <testcase name="print_ctor_7" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0.001"/>
+  <testcase name="print_ctor_8" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0"/>
+  <testcase name="print_ctor_9" classname="com.github.viise.zhurnal.lg.LgDebugTest" time="0.001"/>
+  <testcase name="print" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0.001"/>
+  <testcase name="print_ctor_1" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0.001"/>
+  <testcase name="print_ctor_10" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_11" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_12" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_13" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_14" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_15" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_16" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_17" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_18" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_19" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_1_fullName" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0.001"/>
+  <testcase name="print_ctor_2" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_20" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_21" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_22" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_3" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_4" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_5" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0.001"/>
+  <testcase name="print_ctor_6" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_7" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0.001"/>
+  <testcase name="print_ctor_8" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print_ctor_9" classname="com.github.viise.zhurnal.lg.LgErrorTest" time="0"/>
+  <testcase name="print" classname="com.github.viise.zhurnal.lg.LgFileTest" time="0.004"/>
+  <testcase name="print" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_1" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_10" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_11" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_12" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_13" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_14" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_15" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_16" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_17" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_18" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_19" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_1_fullName" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_2" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0.001"/>
+  <testcase name="print_ctor_20" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_21" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_22" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_3" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0.001"/>
+  <testcase name="print_ctor_4" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_5" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0.001"/>
+  <testcase name="print_ctor_6" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_7" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print_ctor_8" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0.001"/>
+  <testcase name="print_ctor_9" classname="com.github.viise.zhurnal.lg.LgInfoTest" time="0"/>
+  <testcase name="print" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0.001"/>
+  <testcase name="print_ctor_1" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_10" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_11" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_12" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0.002"/>
+  <testcase name="print_ctor_13" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_14" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_15" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0.001"/>
+  <testcase name="print_ctor_16" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_17" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0.001"/>
+  <testcase name="print_ctor_18" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_19" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_1_fullName" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0.001"/>
+  <testcase name="print_ctor_2" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_20" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_21" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_22" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0.001"/>
+  <testcase name="print_ctor_3" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_4" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_5" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0.001"/>
+  <testcase name="print_ctor_6" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_7" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_8" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print_ctor_9" classname="com.github.viise.zhurnal.lg.LgTraceTest" time="0"/>
+  <testcase name="print" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0.001"/>
+  <testcase name="print_ctor_1" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0.001"/>
+  <testcase name="print_ctor_10" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_11" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_12" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_13" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_14" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_15" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_16" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0.001"/>
+  <testcase name="print_ctor_17" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_18" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_19" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0.001"/>
+  <testcase name="print_ctor_1_fullName" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_2" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_20" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_21" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_22" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_3" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_4" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_5" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_6" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_7" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_8" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="print_ctor_9" classname="com.github.viise.zhurnal.lg.LgWarnTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlBasicTest" time="0.001"/>
+  <testcase name="create_null" classname="com.github.viise.zhurnal.tml.TmlBasicTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlChildTest" time="0.001"/>
+  <testcase name="create_nullName" classname="com.github.viise.zhurnal.tml.TmlChildTest" time="0"/>
+  <testcase name="create_nullValue" classname="com.github.viise.zhurnal.tml.TmlChildTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlClassTest" time="0"/>
+  <testcase name="create_nullClass" classname="com.github.viise.zhurnal.tml.TmlClassTest" time="0"/>
+  <testcase name="create_simpleName" classname="com.github.viise.zhurnal.tml.TmlClassTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlDateTimeTest" time="0"/>
+  <testcase name="create_customDateTime" classname="com.github.viise.zhurnal.tml.TmlDateTimeTest" time="0"/>
+  <testcase name="create_customPattern" classname="com.github.viise.zhurnal.tml.TmlDateTimeTest" time="0"/>
+  <testcase name="create_customPattern_2" classname="com.github.viise.zhurnal.tml.TmlDateTimeTest" time="0"/>
+  <testcase name="create_nullDateTime" classname="com.github.viise.zhurnal.tml.TmlDateTimeTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlDebugTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlDurationTest" time="0"/>
+  <testcase name="create_customUnit" classname="com.github.viise.zhurnal.tml.TmlDurationTest" time="0"/>
+  <testcase name="create_nullDuration" classname="com.github.viise.zhurnal.tml.TmlDurationTest" time="0"/>
+  <testcase name="create_nullUnit" classname="com.github.viise.zhurnal.tml.TmlDurationTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlErrorTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlHttpTest" time="0"/>
+  <testcase name="create_nullEndpoint" classname="com.github.viise.zhurnal.tml.TmlHttpTest" time="0.001"/>
+  <testcase name="create_nullMethod" classname="com.github.viise.zhurnal.tml.TmlHttpTest" time="0"/>
+  <testcase name="create_nullStatus" classname="com.github.viise.zhurnal.tml.TmlHttpTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlInfoTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlMsgTest" time="0"/>
+  <testcase name="create_list" classname="com.github.viise.zhurnal.tml.TmlMsgTest" time="0"/>
+  <testcase name="create_nullMsg" classname="com.github.viise.zhurnal.tml.TmlMsgTest" time="0"/>
+  <testcase name="create_nullParams" classname="com.github.viise.zhurnal.tml.TmlMsgTest" time="0"/>
+  <testcase name="create_tooManyParams" classname="com.github.viise.zhurnal.tml.TmlMsgTest" time="0"/>
+  <testcase name="create_tooManyTemplates" classname="com.github.viise.zhurnal.tml.TmlMsgTest" time="0"/>
+  <testcase name="create_withoutParams" classname="com.github.viise.zhurnal.tml.TmlMsgTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlRootTest" time="0"/>
+  <testcase name="create_list" classname="com.github.viise.zhurnal.tml.TmlRootTest" time="0.001"/>
+  <testcase name="create_nullName" classname="com.github.viise.zhurnal.tml.TmlRootTest" time="0"/>
+  <testcase name="create_nullParams" classname="com.github.viise.zhurnal.tml.TmlRootTest" time="0"/>
+  <testcase name="create_withoutChildren" classname="com.github.viise.zhurnal.tml.TmlRootTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlSqlTest" time="0.001"/>
+  <testcase name="create_allNull" classname="com.github.viise.zhurnal.tml.TmlSqlTest" time="0"/>
+  <testcase name="create_fromException" classname="com.github.viise.zhurnal.tml.TmlSqlTest" time="0.001"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlThreadTest" time="0"/>
+  <testcase name="create_nullThread" classname="com.github.viise.zhurnal.tml.TmlThreadTest" time="0"/>
+  <testcase name="create_thread" classname="com.github.viise.zhurnal.tml.TmlThreadTest" time="0.001"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlTraceTest" time="0"/>
+  <testcase name="create" classname="com.github.viise.zhurnal.tml.TmlWarnTest" time="0"/>
+</testsuite>

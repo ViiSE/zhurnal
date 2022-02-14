@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TmlMsg.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.github.viise.zhurnal:zhurnal</a> &gt; <a href="index.source.html" class="el_package">com.github.viise.zhurnal.tml</a> &gt; <span class="el_source">TmlMsg.java</span></div><h1>TmlMsg.java</h1><pre class="source lang-java linenums">package com.github.viise.zhurnal.tml;
+
+import com.github.viise.zhurnal.Template;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public final class TmlMsg implements Template {
+
+    private final String msg;
+    private final List&lt;Object&gt; params;
+
+    public TmlMsg(String name) {
+<span class="fc" id="L15">        this(name, new ArrayList&lt;&gt;());</span>
+<span class="fc" id="L16">    }</span>
+
+<span class="fc" id="L18">    public TmlMsg(String msg, Object... params) {</span>
+<span class="fc" id="L19">        this.msg = msg;</span>
+<span class="fc" id="L20">        this.params = Arrays.asList(params);</span>
+<span class="fc" id="L21">    }</span>
+
+<span class="fc" id="L23">    public TmlMsg(String name, List&lt;Object&gt; params) {</span>
+<span class="fc" id="L24">        this.msg = name;</span>
+<span class="fc" id="L25">        this.params = params;</span>
+<span class="fc" id="L26">    }</span>
+
+    @Override
+    public String create() {
+<span class="fc bfc" id="L30" title="All 4 branches covered.">        if (!(params == null || params.isEmpty())) {</span>
+<span class="pc bpc" id="L31" title="1 of 4 branches missed.">            if (msg != null &amp;&amp; msg.contains(&quot;{}&quot;)) {</span>
+<span class="fc" id="L32">                String resMsg = msg;</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">                for (Object param: params) {</span>
+<span class="fc" id="L34">                    resMsg = resMsg.replaceFirst(&quot;\\{}&quot;, new TmlBasic(param).create());</span>
+
+<span class="fc bfc" id="L36" title="All 2 branches covered.">                    if (!resMsg.contains(&quot;{}&quot;)) {</span>
+<span class="fc" id="L37">                        break;</span>
+                    }
+<span class="fc" id="L39">                }</span>
+
+<span class="fc" id="L41">                return create(resMsg);</span>
+            }
+        }
+
+<span class="fc" id="L45">        return create(msg);</span>
+    }
+
+    private String create(String msg) {
+<span class="fc" id="L49">        return new TmlRoot(</span>
+                &quot;MESSAGE&quot;,
+                new TmlBasic(msg)
+<span class="fc" id="L52">        ).create();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

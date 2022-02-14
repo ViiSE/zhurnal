@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Log">
+    <test name="LogTest">
+        <classes>
+            <class name="com.github.viise.zhurnal.lg.LgBasicTest" />
+            <class name="com.github.viise.zhurnal.lg.LgConsoleTest" />
+            <class name="com.github.viise.zhurnal.lg.LgDebugTest" />
+            <class name="com.github.viise.zhurnal.lg.LgErrorTest" />
+            <class name="com.github.viise.zhurnal.lg.LgFileTest" />
+            <class name="com.github.viise.zhurnal.lg.LgInfoTest" />
+            <class name="com.github.viise.zhurnal.lg.LgTraceTest" />
+            <class name="com.github.viise.zhurnal.lg.LgWarnTest" />
+        </classes>
+    </test>
+</suite>

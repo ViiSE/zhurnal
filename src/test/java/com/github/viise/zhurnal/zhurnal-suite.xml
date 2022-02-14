@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="ZhurnalSuite">
+    <suite-files>
+        <suite-file path="lg/log-suite.xml" />
+        <suite-file path="tml/template-suite.xml" />
+    </suite-files>
+</suite>

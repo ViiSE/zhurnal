@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LgBasic.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">com.github.viise.zhurnal:zhurnal</a> &gt; <a href="index.source.html" class="el_package">com.github.viise.zhurnal.lg</a> &gt; <span class="el_source">LgBasic.java</span></div><h1>LgBasic.java</h1><pre class="source lang-java linenums">package com.github.viise.zhurnal.lg;
+
+import com.github.viise.zhurnal.Log;
+import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.tml.TmlClass;
+import com.github.viise.zhurnal.tml.TmlDateTime;
+import com.github.viise.zhurnal.tml.TmlMsg;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public final class LgBasic implements Log&lt;String&gt; {
+
+    private final Class&lt;?&gt; lgClass;
+    private final Boolean useFullName;
+    private final Template tmlType;
+    private final Template tmlDateTime;
+    private final List&lt;Template&gt; tmls;
+
+    /* Ctor 1*/
+<span class="fc" id="L22">    public LgBasic(Class&lt;?&gt; lgClass, Boolean useFullName, Template tmlType, Template tmlDateTime, List&lt;Template&gt; tmls) {</span>
+<span class="fc" id="L23">        this.lgClass = lgClass;</span>
+<span class="fc" id="L24">        this.useFullName = useFullName;</span>
+<span class="fc" id="L25">        this.tmlType = tmlType;</span>
+<span class="fc" id="L26">        this.tmlDateTime = tmlDateTime;</span>
+<span class="fc" id="L27">        this.tmls = tmls;</span>
+<span class="fc" id="L28">    }</span>
+
+    /* Ctor 2 */
+    public LgBasic(Class&lt;?&gt; lgClass, Boolean useFullName, Template tmlType, Template tmlDateTime, Template... tmls) {
+<span class="fc" id="L32">        this(lgClass, useFullName, tmlType, tmlDateTime, Arrays.asList(tmls));</span>
+<span class="fc" id="L33">    }</span>
+
+    /* Ctor 3 */
+    public LgBasic(Class&lt;?&gt; lgClass, Boolean useFullName, Template tmlType, Template tmlDateTime, String msg) {
+<span class="fc" id="L37">        this(lgClass, useFullName, tmlType, tmlDateTime, new TmlMsg(msg));</span>
+<span class="fc" id="L38">    }</span>
+
+    /* Ctor 4 */
+    public LgBasic(Class&lt;?&gt; lgClass, Template tmlType, Template tmlDateTime, List&lt;Template&gt; tmls) {
+<span class="fc" id="L42">        this(lgClass, false, tmlType, tmlDateTime, tmls);</span>
+<span class="fc" id="L43">    }</span>
+
+    /* Ctor 5 */
+    public LgBasic(Class&lt;?&gt; lgClass, Template tmlType, List&lt;Template&gt; tmls) {
+<span class="fc" id="L47">        this(lgClass, false, tmlType, new TmlDateTime(), tmls);</span>
+<span class="fc" id="L48">    }</span>
+
+    /* Ctor 6 */
+    public LgBasic(Template tmlType, List&lt;Template&gt; tmls) {
+<span class="fc" id="L52">        this(LgBasic.class, false, tmlType, new TmlDateTime(), tmls);</span>
+<span class="fc" id="L53">    }</span>
+
+    /* Ctor 7 */
+    public LgBasic(Template tmlType, Template tmlDateTime, List&lt;Template&gt; tmls) {
+<span class="fc" id="L57">        this(LgBasic.class, false, tmlType, tmlDateTime, tmls);</span>
+<span class="fc" id="L58">    }</span>
+
+    /* Ctor 8 */
+    public LgBasic(Class&lt;?&gt; lgClass, Template tmlType, Template tmlDateTime, Template... tmls) {
+<span class="fc" id="L62">        this(lgClass, tmlType, tmlDateTime, Arrays.asList(tmls));</span>
+<span class="fc" id="L63">    }</span>
+
+    /* Ctor 9 */
+    public LgBasic(Class&lt;?&gt; lgClass, Template tmlType, Template... tmls) {
+<span class="fc" id="L67">        this(lgClass, tmlType, new TmlDateTime(), Arrays.asList(tmls));</span>
+<span class="fc" id="L68">    }</span>
+
+    /* Ctor 10 */
+    public LgBasic(Template tmlType, Template tmlDateTime, Template... tmls) {
+<span class="fc" id="L72">        this(LgBasic.class, tmlType, tmlDateTime, Arrays.asList(tmls));</span>
+<span class="fc" id="L73">    }</span>
+
+    /* Ctor 11 */
+    public LgBasic(Template tmlType, Template... tmls) {
+<span class="fc" id="L77">        this(LgBasic.class, tmlType, new TmlDateTime(), Arrays.asList(tmls));</span>
+<span class="fc" id="L78">    }</span>
+
+    /* Ctor 12 */
+    public LgBasic(Class&lt;?&gt; lgClass, Template tmlType, Template tmlDateTime, String msg) {
+<span class="fc" id="L82">        this(lgClass, tmlType, tmlDateTime, new Template[] { new TmlMsg(msg, new ArrayList&lt;&gt;()) });</span>
+<span class="fc" id="L83">    }</span>
+
+    /* Ctor 13 */
+    public LgBasic(Class&lt;?&gt; lgClass, Template tmlType, String msg) {
+<span class="fc" id="L87">        this(lgClass, tmlType, new TmlDateTime(), new Template[] { new TmlMsg(msg, new ArrayList&lt;&gt;()) });</span>
+<span class="fc" id="L88">    }</span>
+
+    /* Ctor 14 */
+    public LgBasic(Template tmlType, Template tmlDateTime, String msg) {
+<span class="fc" id="L92">        this(LgBasic.class, tmlType, tmlDateTime, msg);</span>
+<span class="fc" id="L93">    }</span>
+
+    /* Ctor 15 */
+    public LgBasic(Template tmlType, String msg) {
+<span class="fc" id="L97">        this(LgBasic.class, tmlType, new TmlDateTime(), msg);</span>
+<span class="fc" id="L98">    }</span>
+
+    /* Ctor 16 */
+    public LgBasic(Class&lt;?&gt; lgClass, Template tmlType, Template tmlDateTime, String msg, List&lt;Object&gt; params) {
+<span class="fc" id="L102">        this(lgClass, tmlType, tmlDateTime, new Template[] { new TmlMsg(msg, params) });</span>
+<span class="fc" id="L103">    }</span>
+
+    /* Ctor 17 */
+    public LgBasic(Class&lt;?&gt; lgClass, Template tmlType, String msg, List&lt;Object&gt; params) {
+<span class="fc" id="L107">        this(lgClass, tmlType, new TmlDateTime(), new Template[] { new TmlMsg(msg, params) });</span>
+<span class="fc" id="L108">    }</span>
+
+    /* Ctor 18 */
+    public LgBasic(Template tmlType, String msg, List&lt;Object&gt; params) {
+<span class="fc" id="L112">        this(LgBasic.class, tmlType, new TmlDateTime(), new Template[] { new TmlMsg(msg, params) });</span>
+<span class="fc" id="L113">    }</span>
+
+    /* Ctor 19 */
+    public LgBasic(Class&lt;?&gt; lgClass, Template tmlType, Template tmlDateTime, String msg, Object... params) {
+<span class="nc" id="L117">        this(lgClass, tmlType, tmlDateTime, new Template[] { new TmlMsg(msg, params) });</span>
+<span class="nc" id="L118">    }</span>
+
+    /* Ctor 20 */
+    public LgBasic(Class&lt;?&gt; lgClass, Template tmlType, String msg, Object... params) {
+<span class="fc" id="L122">        this(lgClass, tmlType, new TmlDateTime(), new Template[] { new TmlMsg(msg, params) });</span>
+<span class="fc" id="L123">    }</span>
+
+    /* Ctor 21 */
+    public LgBasic(Template tmlType, Template tmlDateTime, String msg, Object... params) {
+<span class="fc" id="L127">        this(LgBasic.class, tmlType, tmlDateTime, new Template[] { new TmlMsg(msg, params) });</span>
+<span class="fc" id="L128">    }</span>
+
+    /* Ctor 22 */
+    public LgBasic(Template tmlType, String msg, Object... params) {
+<span class="fc" id="L132">        this(LgBasic.class, tmlType, new TmlDateTime(), new Template[] { new TmlMsg(msg, params) });</span>
+<span class="fc" id="L133">    }</span>
+
+    @Override
+    public String print() {
+<span class="fc" id="L137">        StringBuilder sb = new StringBuilder(tmlType.create())</span>
+<span class="fc" id="L138">                .append(&quot; &quot;)</span>
+<span class="fc" id="L139">                .append(tmlDateTime.create())</span>
+<span class="fc" id="L140">                .append(&quot; &quot;)</span>
+<span class="fc" id="L141">                .append(new TmlClass(lgClass, useFullName).create());</span>
+<span class="fc" id="L142">        tmls.forEach(tml -&gt; sb.append(&quot; &quot;).append(tml.create()));</span>
+<span class="fc" id="L143">        return sb.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
