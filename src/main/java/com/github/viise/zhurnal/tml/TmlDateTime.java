@@ -12,7 +12,7 @@ public final class TmlDateTime implements Template {
 
     public TmlDateTime(LocalDateTime localDateTime, DateTimeFormatter dtf) {
         this.localDateTime = localDateTime;
-        this.dtf = dtf;
+        this.dtf = dtf == null ? DateTimeFormatter.ISO_DATE_TIME : dtf;
     }
 
     public TmlDateTime(LocalDateTime localDateTime, String pattern) {
