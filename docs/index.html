@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zhurnal - Micro object-oriented library for logging.</title>
+    <link rel="shortcut icon" type="image/x-icon" href="">
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    @-webkit-keyframes gradientAnim {
+        0%{background-position:0 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0 50%}
+    }
+    @-moz-keyframes gradientAnim {
+        0%{background-position:0 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0 50%}
+    }
+    @keyframes gradientAnim {
+        0%{background-position:0 50%}
+        50%{background-position:100% 50%}
+        100%{background-position:0 50%}
+    }
+
+    .cBody {
+        /*background: radial-gradient(circle, rgba(227,242,253,1) 0%, rgba(187,222,251,1) 100%);*/
+        position: absolute;
+        max-width: 100%;
+        padding: 1em;
+        height: 17em;
+        top:0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        animation: fadeIn ease 1500ms;
+        -webkit-animation: fadeIn ease 1500ms;
+        -moz-animation: fadeIn ease 1500ms;
+        -o-animation: fadeIn ease 1500ms;
+    }
+    @keyframes fadeIn{
+        0% {
+            opacity:0;
+        }
+        100% {
+            opacity:1;
+        }
+    }
+    .cText {
+        font-family: 'Open Sans', serif;
+        text-align: center;
+        font-size: 40pt;
+        color: #424242;
+    }
+    html {
+        height: 100%;
+        /*background:  radial-gradient(circle, #cbf078, #e0ffcd, #feffdf, #f8fcfb);*/
+        background:  radial-gradient(circle, #E0E0E0, #BDBDBD, #9E9E9E, #757575);
+        background-size: 300% 300%;
+
+        -webkit-animation: gradientAnim 30s ease infinite;
+        -moz-animation: gradientAnim 30s ease infinite;
+        animation: gradientAnim 30s ease infinite;
+    }
+</style>
+
+<body class="cBody">
+<div class="center">
+    <div class="cText">
+        Zhurnal
+    </div>
+    <div class="cText" style="font-size: 14pt; margin-top: 10pt">
+        Object-Oriented library for protection objects.
+    </div>
+    <div class="cText" style="font-size: 14pt; margin-top: 15pt">
+        <a href="https://viise.github.io/zhurnal/javadoc/" class="cLink">JavaDoc</a>
+    </div>
+    <div class="cText" style="font-size: 14pt; margin-top: 5pt">
+        <a href="https://github.com/ViiSE/zhurnal/wiki/" class="cLink">Wiki</a>
+    </div>
+</div>
+</body>
+
+<footer>
+    <div class="cText" style="font-size: 14pt; margin-top: 20pt">
+        <a href="https://github.com/ViiSE/zhurnal" class="cLink">GitHub</a>
+        <div>2022 © ViiSE</div>
+    </div>
+</footer>
