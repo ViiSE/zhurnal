@@ -1,18 +1,28 @@
+/*
+ * Copyright 2022 ViiSE
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.github.viise.zhurnal.lg;
 
 import com.github.viise.zhurnal.Log;
+import com.github.viise.zhurnal.Template;
 
-public final class LgConsole implements Log<Void> {
-
-    private final Log<String> lg;
-
-    public LgConsole(Log<String> lg) {
-        this.lg = lg;
-    }
+public final class LgConsole implements Log {
 
     @Override
-    public Void print() {
-        System.out.println(lg.print());
-        return null;
+    public void print(Template tml) {
+        System.out.println(tml.create());
     }
 }

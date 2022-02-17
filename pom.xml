@@ -9,7 +9,7 @@
     <version>0.0.1</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
-    <description>Micro object-oriented library for logging</description>
+    <description>Micro object-oriented library for logging.</description>
     <url>https://github.com/ViiSE/zhurnal</url>
 
     <licenses>
@@ -48,12 +48,6 @@
     </distributionManagement>
 
     <dependencies>
-        <dependency>
-            <groupId>com.github.javafaker</groupId>
-            <artifactId>javafaker</artifactId>
-            <version>1.0.2</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>

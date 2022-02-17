@@ -54,6 +54,20 @@ public class TmlMsgTest {
         assertEquals(actual, "[MESSAGE Hello, {}!]");
     }
 
+    @SuppressWarnings("ConstantConditions")
+    @Test
+    public void create_allNull() {
+        List<Object> params = null;
+        String actual = new TmlMsg(null, params).create();
+        assertEquals(actual, "[MESSAGE null]");
+    }
+
+    @Test
+    public void create_oneOfParamIsNull() {
+        String actual = new TmlMsg("Hello, {}! Your age is {}.", "John", null).create();
+        assertEquals(actual, "[MESSAGE Hello, John! Your age is null.]");
+    }
+
     @Test
     public void create_withoutParams() {
         String actual = new TmlMsg("Hello, World!").create();

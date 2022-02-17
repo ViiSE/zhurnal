@@ -43,4 +43,13 @@ public class TmlDateTimeTest {
         String actual = new TmlDateTime(null).create();
         assertEquals(actual, "[null]");
     }
+
+    @SuppressWarnings("ConstantConditions")
+    @Test
+    public void create_nullDateTimeFormatter() {
+        DateTimeFormatter dtf = null;
+        LocalDateTime ldt = LocalDateTime.now();
+        String actual = new TmlDateTime(ldt, dtf).create();
+        assertEquals(actual, String.format("[%s]", DateTimeFormatter.ISO_DATE_TIME.format(ldt)));
+    }
 }

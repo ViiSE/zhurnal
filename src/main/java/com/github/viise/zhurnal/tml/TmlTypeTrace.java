@@ -16,27 +16,12 @@
 
 package com.github.viise.zhurnal.tml;
 
-import org.testng.annotations.Test;
+import com.github.viise.zhurnal.Template;
 
-import static org.testng.Assert.assertEquals;
+public final class TmlTypeTrace implements Template {
 
-public class TmlClassTest {
-
-    @Test
-    public void create() {
-        String actual = new TmlClass(TmlClassTest.class).create();
-        assertEquals(actual, "[com.github.viise.zhurnal.tml.TmlClassTest]");
-    }
-
-    @Test
-    public void create_simpleName() {
-        String actual = new TmlClass(TmlClassTest.class, false).create();
-        assertEquals(actual, "[TmlClassTest]");
-    }
-
-    @Test
-    public void create_nullClass() {
-        String actual = new TmlClass(null).create();
-        assertEquals(actual, "[null]");
+    @Override
+    public String create() {
+        return "[TRACE]";
     }
 }
