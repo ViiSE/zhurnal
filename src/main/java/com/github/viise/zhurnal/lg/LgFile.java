@@ -23,7 +23,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-public final class LgFile implements Log {
+public final class LgFile implements Log<Template> {
 
     private final String fileName;
 

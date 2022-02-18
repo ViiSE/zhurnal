@@ -16,18 +16,21 @@
 
 package com.github.viise.zhurnal.lg;
 
+import com.github.viise.zhurnal.Log;
+import com.github.viise.zhurnal.Template;
 import com.github.viise.zhurnal.tml.TmlInfo;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.testng.Assert.assertTrue;
 
-public class LgFileTest {
+public class LgChainTest {
 
     private final String fName = System.getProperty("user.dir") + File.separator
             + "src" + File.separator
@@ -37,36 +40,55 @@ public class LgFileTest {
 
     @Test
     public void print() throws IOException {
-        new LgFile(fName).print(new TmlInfo(LgFileTest.class, "Hello, {}!", "log"));
+        new LgChain(
+                new LgConsole(),
+                new LgFile(fName)
+        ).print(new TmlInfo(LgChainTest.class, "Hello, {}!", "log"));
 
         String actual = Files.readAllLines(Paths.get(fName)).get(0);
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.lg\\.LgFileTest] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.lg\\.LgChainTest] \\[MESSAGE Hello, log!]"
                 )
         );
-    }
 
-    @Test(expectedExceptions = RuntimeException.class)
-    public void print_fileNotFound() throws IOException {
-        new LgFile("not-found/this-file-does-not-exists.log").print(
-                new TmlInfo(LgFileTest.class, "Hello, {}!", "log")
-        );
-
-        String actual = Files.readAllLines(Paths.get(fName)).get(0);
-        assertTrue(
-                actual.matches(
-                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.lg\\.LgFileTest] \\[MESSAGE Hello, log!]"
-                )
-        );
-    }
-
-    @AfterClass
-    public void cleanUp() {
         try {
             Files.delete(Paths.get(fName));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    @Test
+    public void print_list() throws IOException {
+        new LgChain(new ArrayList<Log<Template>>() {{
+            add(new LgConsole());
+            add(new LgFile(fName));
+        }}).print(new TmlInfo(LgChainTest.class, "Hello, {}!", "log"));
+
+        String actual = Files.readAllLines(Paths.get(fName)).get(0);
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.lg\\.LgChainTest] \\[MESSAGE Hello, log!]"
+                )
+        );
+
+        try {
+            Files.delete(Paths.get(fName));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    @Test(expectedExceptions = NullPointerException.class)
+    public void print_null() {
+        List<Log<Template>> lgs = null;
+        new LgChain(lgs).print(new TmlInfo(LgChainTest.class, "Hello, {}!", "log"));
+    }
+
+    @Test(expectedExceptions = NullPointerException.class)
+    public void print_oneLogIsNull() {
+        new LgChain(new LgConsole(), null).print(new TmlInfo(LgChainTest.class, "Hello, {}!", "log"));
     }
 }

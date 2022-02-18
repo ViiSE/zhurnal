@@ -7,23 +7,21 @@
             <class name="com.github.viise.zhurnal.tml.TmlBasicTest" />
             <class name="com.github.viise.zhurnal.tml.TmlChildTest" />
             <class name="com.github.viise.zhurnal.tml.TmlClassTest" />
-            <class name="com.github.viise.zhurnal.tml.TmlDateTimeTest" />
-            <class name="com.github.viise.zhurnal.tml.TmlTypeDebugTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlTimestampTest" />
             <class name="com.github.viise.zhurnal.tml.TmlDurationTest" />
-            <class name="com.github.viise.zhurnal.tml.TmlTypeErrorTest" />
             <class name="com.github.viise.zhurnal.tml.TmlHttpTest" />
-            <class name="com.github.viise.zhurnal.tml.TmlTypeInfoTest" />
             <class name="com.github.viise.zhurnal.tml.TmlMsgTest" />
             <class name="com.github.viise.zhurnal.tml.TmlRootTest" />
             <class name="com.github.viise.zhurnal.tml.TmlSqlTest" />
             <class name="com.github.viise.zhurnal.tml.TmlThreadTest" />
-            <class name="com.github.viise.zhurnal.tml.TmlTypeTraceTest" />
-            <class name="com.github.viise.zhurnal.tml.TmlTypeWarnTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlThrowableTest" />
             <class name="com.github.viise.zhurnal.tml.TmlDebugTest" />
             <class name="com.github.viise.zhurnal.tml.TmlErrorTest" />
             <class name="com.github.viise.zhurnal.tml.TmlInfoTest" />
             <class name="com.github.viise.zhurnal.tml.TmlTraceTest" />
             <class name="com.github.viise.zhurnal.tml.TmlWarnTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlEntryTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlLevelTest" />
         </classes>
     </test>
 </suite>

@@ -40,7 +40,7 @@ public class TmlDebugTest {
 
         assertTrue(
                 actual.matches(
-                "\\[DEBUG] \\[.*] \\[TmlDebugTest] \\[HTTP <METHOD:GET> <ENDPOINT:/log/1> <STATUS:200 OK>] \\[DURATION <VALUE:300> <UNIT:MILLISECONDS>]"
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebugTest] \\[HTTP <METHOD:GET> <ENDPOINT:/log/1> <STATUS:200 OK>] \\[DURATION <VALUE:300> <UNIT:MILLISECONDS>]"
                 )
         );
     }
@@ -50,10 +50,14 @@ public class TmlDebugTest {
         String actual = new TmlDebug(
                 TmlDebug.class,
                 false,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -61,10 +65,14 @@ public class TmlDebugTest {
         String actual = new TmlDebug(
                 TmlDebug.class,
                 true,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -72,10 +80,14 @@ public class TmlDebugTest {
         String actual = new TmlDebug(
                 TmlDebug.class,
                 false,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new TmlMsg("Hello, log!")
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -83,20 +95,28 @@ public class TmlDebugTest {
         String actual = new TmlDebug(
                 TmlDebug.class,
                 false,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_4() {
         String actual = new TmlDebug(
                 TmlDebug.class,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -105,7 +125,11 @@ public class TmlDebugTest {
                 TmlDebug.class,
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -113,26 +137,38 @@ public class TmlDebugTest {
         String actual = new TmlDebug(
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_7() {
         String actual = new TmlDebug(
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_8() {
         String actual = new TmlDebug(
                 TmlDebug.class,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -141,16 +177,24 @@ public class TmlDebugTest {
                 TmlDebug.class,
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_10() {
         String actual = new TmlDebug(
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -158,17 +202,25 @@ public class TmlDebugTest {
         String actual = new TmlDebug(
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_12() {
         String actual = new TmlDebug(
                 TmlDebug.class,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -177,33 +229,49 @@ public class TmlDebugTest {
                 TmlDebug.class,
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_14() {
         String actual = new TmlDebug(
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_15() {
         String actual = new TmlDebug("Hello, log!").create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_16() {
         String actual = new TmlDebug(
                 TmlDebug.class,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, {}!",
                 new ArrayList<Object>() {{ add("log"); }}
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -213,7 +281,11 @@ public class TmlDebugTest {
                 "Hello, {}!",
                 new ArrayList<Object>() {{ add("log"); }}
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -222,18 +294,26 @@ public class TmlDebugTest {
                 "Hello, {}!",
                 new ArrayList<Object>() {{ add("log"); }}
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_19() {
         String actual = new TmlDebug(
                 TmlDebug.class,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -243,17 +323,25 @@ public class TmlDebugTest {
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_21() {
         String actual = new TmlDebug(
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -262,6 +350,10 @@ public class TmlDebugTest {
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[DEBUG] \\[.*] \\[TmlDebug] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL DEBUG] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlDebug] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 }

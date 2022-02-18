@@ -16,13 +16,15 @@
 
 package com.github.viise.zhurnal.tml;
 
+import com.github.viise.zhurnal.Level;
 import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateLeveled;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public final class TmlWarn implements Template {
+public final class TmlWarn implements TemplateLeveled {
 
     private final Class<?> lgClass;
     private final Boolean useFullName;
@@ -49,22 +51,22 @@ public final class TmlWarn implements Template {
 
     /* Ctor 4 */
     public TmlWarn(Class<?> lgClass, Template tmlDateTime, List<Template> tmls) {
-        this(lgClass, false, tmlDateTime, tmls);
+        this(lgClass, true, tmlDateTime, tmls);
     }
 
     /* Ctor 5 */
     public TmlWarn(Class<?> lgClass, List<Template> tmls) {
-        this(lgClass, false, new TmlDateTime(), tmls);
+        this(lgClass, true, new TmlTimestamp(), tmls);
     }
 
     /* Ctor 6 */
     public TmlWarn(List<Template> tmls) {
-        this(TmlWarn.class, false, new TmlDateTime(), tmls);
+        this(TmlWarn.class, true, new TmlTimestamp(), tmls);
     }
 
     /* Ctor 7 */
     public TmlWarn(Template tmlDateTime, List<Template> tmls) {
-        this(TmlWarn.class, false, tmlDateTime, tmls);
+        this(TmlWarn.class, true, tmlDateTime, tmls);
     }
 
     /* Ctor 8 */
@@ -74,7 +76,7 @@ public final class TmlWarn implements Template {
 
     /* Ctor 9 */
     public TmlWarn(Class<?> lgClass, Template... tmls) {
-        this(lgClass, new TmlDateTime(), Arrays.asList(tmls));
+        this(lgClass, new TmlTimestamp(), Arrays.asList(tmls));
     }
 
     /* Ctor 10 */
@@ -84,7 +86,7 @@ public final class TmlWarn implements Template {
 
     /* Ctor 11 */
     public TmlWarn(Template... tmls) {
-        this(TmlWarn.class, new TmlDateTime(), Arrays.asList(tmls));
+        this(TmlWarn.class, new TmlTimestamp(), Arrays.asList(tmls));
     }
 
     /* Ctor 12 */
@@ -94,7 +96,7 @@ public final class TmlWarn implements Template {
 
     /* Ctor 13 */
     public TmlWarn(Class<?> lgClass, String msg) {
-        this(lgClass, new TmlDateTime(), new Template[] { new TmlMsg(msg, new ArrayList<>()) });
+        this(lgClass, new TmlTimestamp(), new Template[] { new TmlMsg(msg, new ArrayList<>()) });
     }
 
     /* Ctor 14 */
@@ -104,7 +106,7 @@ public final class TmlWarn implements Template {
 
     /* Ctor 15 */
     public TmlWarn(String msg) {
-        this(TmlWarn.class, new TmlDateTime(), msg);
+        this(TmlWarn.class, new TmlTimestamp(), msg);
     }
 
     /* Ctor 16 */
@@ -114,12 +116,12 @@ public final class TmlWarn implements Template {
 
     /* Ctor 17 */
     public TmlWarn(Class<?> lgClass, String msg, List<Object> params) {
-        this(lgClass, new TmlDateTime(), new Template[] { new TmlMsg(msg, params) });
+        this(lgClass, new TmlTimestamp(), new Template[] { new TmlMsg(msg, params) });
     }
 
     /* Ctor 18 */
     public TmlWarn(String msg, List<Object> params) {
-        this(TmlWarn.class, new TmlDateTime(), new Template[] { new TmlMsg(msg, params) });
+        this(TmlWarn.class, new TmlTimestamp(), new Template[] { new TmlMsg(msg, params) });
     }
 
     /* Ctor 19 */
@@ -129,7 +131,7 @@ public final class TmlWarn implements Template {
 
     /* Ctor 20 */
     public TmlWarn(Class<?> lgClass, String msg, Object... params) {
-        this(lgClass, new TmlDateTime(), new Template[] { new TmlMsg(msg, params) });
+        this(lgClass, new TmlTimestamp(), new Template[] { new TmlMsg(msg, params) });
     }
 
     /* Ctor 21 */
@@ -139,11 +141,16 @@ public final class TmlWarn implements Template {
 
     /* Ctor 22 */
     public TmlWarn(String msg, Object... params) {
-        this(TmlWarn.class, new TmlDateTime(), new Template[] { new TmlMsg(msg, params) });
+        this(TmlWarn.class, new TmlTimestamp(), new Template[] { new TmlMsg(msg, params) });
     }
 
     @Override
     public String create() {
-        return new TmlEntry(lgClass, useFullName, new TmlTypeWarn(), tmlDateTime, tmls).create();
+        return new TmlEntry(lgClass, useFullName, Level.WARN, tmlDateTime, tmls).create();
+    }
+
+    @Override
+    public Level level() {
+        return Level.WARN;
     }
 }

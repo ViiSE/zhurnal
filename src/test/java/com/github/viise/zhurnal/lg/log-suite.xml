@@ -4,8 +4,10 @@
 <suite name="Log">
     <test name="LogTest">
         <classes>
+            <class name="com.github.viise.zhurnal.lg.LgChainTest" />
             <class name="com.github.viise.zhurnal.lg.LgConsoleTest" />
             <class name="com.github.viise.zhurnal.lg.LgFileTest" />
+            <class name="com.github.viise.zhurnal.lg.LgLimitedTest" />
         </classes>
     </test>
 </suite>

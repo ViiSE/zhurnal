@@ -19,7 +19,7 @@ package com.github.viise.zhurnal.lg;
 import com.github.viise.zhurnal.Log;
 import com.github.viise.zhurnal.Template;
 
-public final class LgConsole implements Log {
+public final class LgConsole implements Log<Template> {
 
     @Override
     public void print(Template tml) {

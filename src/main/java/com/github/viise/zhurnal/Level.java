@@ -14,17 +14,12 @@
  * limitations under the License.
  */
 
-package com.github.viise.zhurnal.tml;
+package com.github.viise.zhurnal;
 
-import org.testng.annotations.Test;
-
-import static org.testng.Assert.assertEquals;
-
-public class TmlTypeErrorTest {
-
-    @Test
-    public void create() {
-        String actual = new TmlTypeError().create();
-        assertEquals(actual, "[ERROR]");
-    }
+public enum Level {
+    INFO,
+    WARN,
+    ERROR,
+    TRACE,
+    DEBUG
 }

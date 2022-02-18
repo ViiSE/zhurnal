@@ -16,15 +16,19 @@
 
 package com.github.viise.zhurnal.tml;
 
-import org.testng.annotations.Test;
+import com.github.viise.zhurnal.Level;
+import com.github.viise.zhurnal.Template;
 
-import static org.testng.Assert.assertEquals;
+public class TmlLevel implements Template {
 
-public class TmlTypeDebugTest {
+    private final Level lvl;
 
-    @Test
-    public void create() {
-        String actual = new TmlTypeDebug().create();
-        assertEquals(actual, "[DEBUG]");
+    public TmlLevel(Level lvl) {
+        this.lvl = lvl;
+    }
+
+    @Override
+    public String create() {
+        return String.format("[LEVEL %s]", lvl != null ? lvl.name() : "null");
     }
 }

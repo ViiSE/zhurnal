@@ -24,15 +24,11 @@ package com.github.viise.zhurnal;
  * For custom {@code Log} implementation it's necessary to check constructor parameters for null. For this you can use
  * implementation of {@code Template} interface - {@link com.github.viise.zhurnal.tml.TmlBasic}.
  *
- * @see com.github.viise.zhurnal.Template
+ * @see TemplateLeveled
  * @see com.github.viise.zhurnal.tml.TmlBasic
  * @see <a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html">Grok</a>
  */
-public interface Template {
+public interface TemplateLeveled extends Template {
 
-    /**
-     * Creating template.
-     * @return Template as a string. String must not be null.
-     */
-    String create();
+    Level level();
 }

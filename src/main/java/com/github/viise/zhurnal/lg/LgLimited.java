@@ -16,27 +16,32 @@
 
 package com.github.viise.zhurnal.lg;
 
+import com.github.viise.zhurnal.Level;
 import com.github.viise.zhurnal.Log;
 import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateLeveled;
 
 import java.util.Arrays;
 import java.util.List;
 
-public final class LgChain implements Log<Template> {
+public class LgLimited implements Log<TemplateLeveled> {
 
-    private final List<Log<Template>> lgs;
+    private final Log<Template> lg;
+    private final List<Level> allowedLvls;
 
-    public LgChain(List<Log<Template>> lgs) {
-        this.lgs = lgs;
+    public LgLimited(Log<Template> lg, List<Level> allowedLvls) {
+        this.lg = lg;
+        this.allowedLvls = allowedLvls;
     }
 
-    @SafeVarargs
-    public LgChain(Log<Template>... lgs) {
-        this(Arrays.asList(lgs));
+    public LgLimited(Log<Template> lg, Level... allowedLvls) {
+        this(lg, Arrays.asList(allowedLvls));
     }
 
     @Override
-    public void print(Template tml) {
-        lgs.forEach(lg -> lg.print(tml));
+    public void print(TemplateLeveled tmlLvl) {
+        if (allowedLvls.contains(tmlLvl.level())) {
+            lg.print(tmlLvl);
+        }
     }
 }

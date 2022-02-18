@@ -16,12 +16,22 @@
 
 package com.github.viise.zhurnal.tml;
 
-import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.Level;
+import org.testng.annotations.Test;
 
-public final class TmlTypeError implements Template {
+import static org.testng.Assert.assertEquals;
 
-    @Override
-    public String create() {
-        return "[ERROR]";
+public class TmlLevelTest {
+
+    @Test
+    public void create() {
+        String actual = new TmlLevel(Level.INFO).create();
+        assertEquals(actual, "[LEVEL INFO]");
+    }
+
+    @Test
+    public void create_nullLevel() {
+        String actual = new TmlLevel(null).create();
+        assertEquals(actual, "[LEVEL null]");
     }
 }

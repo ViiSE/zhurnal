@@ -16,6 +16,7 @@
 
 package com.github.viise.zhurnal.tml;
 
+import com.github.viise.zhurnal.Level;
 import com.github.viise.zhurnal.Template;
 import org.testng.annotations.Test;
 
@@ -30,11 +31,15 @@ public class TmlEntryTest {
         String actual = new TmlEntry(
                 TmlEntry.class,
                 false,
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -42,11 +47,15 @@ public class TmlEntryTest {
         String actual = new TmlEntry(
                 TmlEntry.class,
                 true,
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -54,11 +63,14 @@ public class TmlEntryTest {
         String actual = new TmlEntry(
                 TmlEntry.class,
                 false,
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 new TmlMsg("Hello, log!")
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS TmlEntry] \\[MESSAGE Hello, log!]")
+        );
     }
 
     @Test
@@ -66,207 +78,286 @@ public class TmlEntryTest {
         String actual = new TmlEntry(
                 TmlEntry.class,
                 false,
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_4() {
         String actual = new TmlEntry(
                 TmlEntry.class,
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_5() {
         String actual = new TmlEntry(
                 TmlEntry.class,
-                new TmlTypeInfo(),
+                Level.INFO,
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_6() {
         String actual = new TmlEntry(
-                new TmlTypeInfo(),
+                Level.INFO,
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_7() {
         String actual = new TmlEntry(
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_8() {
         String actual = new TmlEntry(
                 TmlEntry.class,
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_9() {
         String actual = new TmlEntry(
                 TmlEntry.class,
-                new TmlTypeInfo(),
+                Level.INFO,
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_10() {
         String actual = new TmlEntry(
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_11() {
         String actual = new TmlEntry(
-                new TmlTypeInfo(),
+                Level.INFO,
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_12() {
         String actual = new TmlEntry(
                 TmlEntry.class,
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_13() {
         String actual = new TmlEntry(
                 TmlEntry.class,
-                new TmlTypeInfo(),
+                Level.INFO,
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_14() {
         String actual = new TmlEntry(
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_15() {
         String actual = new TmlEntry(
-                new TmlTypeInfo(),
+                Level.INFO,
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_16() {
         String actual = new TmlEntry(
                 TmlEntry.class,
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 "Hello, {}!",
                 new ArrayList<Object>() {{ add("log"); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_17() {
         String actual = new TmlEntry(
                 TmlEntry.class,
-                new TmlTypeInfo(),
+                Level.INFO,
                 "Hello, {}!",
                 new ArrayList<Object>() {{ add("log"); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_18() {
         String actual = new TmlEntry(
-                new TmlTypeInfo(),
+                Level.INFO,
                 "Hello, {}!",
                 new ArrayList<Object>() {{ add("log"); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches("\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_19() {
         String actual = new TmlEntry(
                 TmlEntry.class,
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_20() {
         String actual = new TmlEntry(
                 TmlEntry.class,
-                new TmlTypeInfo(),
+                Level.INFO,
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_21() {
         String actual = new TmlEntry(
-                new TmlTypeInfo(),
-                new TmlDateTime(),
+                Level.INFO,
+                new TmlTimestamp(),
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_22() {
         String actual = new TmlEntry(
-                new TmlTypeInfo(),
+                Level.INFO,
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlEntry] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 }

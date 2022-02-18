@@ -21,17 +21,14 @@ package com.github.viise.zhurnal;
  * Implementations of the {@code Log} interface must use {@code Templates} to ensure that logs conform to the same
  * standard. Logs of one standard are easier to parse using Grok or Regex and so on.
  *
- * For custom {@code Log} implementation it's necessary to check constructor parameters for null. For this you can use
- * implementation of {@code Template} interface - {@link com.github.viise.zhurnal.tml.TmlBasic}.
- *
  * @see com.github.viise.zhurnal.Template
- * @see com.github.viise.zhurnal.tml.TmlBasic
  * @see <a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html">Grok</a>
  */
-public interface Log {
+public interface Log<T extends Template> {
 
     /**
      * Printing log.
+     * For custom {@code Template} implementation it's necessary to check constructor parameters for null.
      */
-    void print(Template tml);
+    void print(T tml);
 }

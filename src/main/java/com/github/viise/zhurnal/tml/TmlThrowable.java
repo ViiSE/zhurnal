@@ -44,23 +44,33 @@ public class TmlThrowable implements Template {
     @Override
     public String create() {
         String stackTrace = null;
-        String msg = null;
+        String msg;
         if (thr != null) {
             StringWriter sw = new StringWriter();
             try (PrintWriter pw = new PrintWriter(sw)) {
                 thr.printStackTrace(pw);
                 stackTrace = sw.toString();
+                String format = errorMsg != null ? (errorMsg.isEmpty() ? "%s%s" : "%s:%s") : "%s:%s";
                 msg = printThrMsg
-                        ? (new TmlBasic(thr.getMessage()).create() + new TmlBasic(errorMsg).create())
+                        ? String.format(
+                                format,
+                                new TmlBasic(errorMsg).create(),
+                                new TmlBasic(thr.getMessage()).create()
+                        )
                         : new TmlBasic(errorMsg).create();
             }
+        } else {
+            String format = errorMsg != null ? (errorMsg.isEmpty() ? "null" : "%s:null") : "null";
+            msg = printThrMsg
+                    ? String.format(format, new TmlBasic(errorMsg).create())
+                    : String.format("%s", new TmlBasic(errorMsg).create());
         }
 
         return new TmlRoot(
                 "throwable",
                 new TmlChild(
                         "message",
-                        new TmlBasic(msg).create()
+                        msg
                 ),
                 new TmlChild(
                         "stack_trace",

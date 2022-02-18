@@ -24,7 +24,6 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class TmlInfoTest {
@@ -41,7 +40,7 @@ public class TmlInfoTest {
 
         assertTrue(
                 actual.matches(
-                "\\[INFO] \\[.*] \\[TmlInfoTest] \\[HTTP <METHOD:GET> <ENDPOINT:/log/1> <STATUS:200 OK>] \\[DURATION <VALUE:300> <UNIT:MILLISECONDS>]"
+                "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfoTest] \\[HTTP <METHOD:GET> <ENDPOINT:/log/1> <STATUS:200 OK>] \\[DURATION <VALUE:300> <UNIT:MILLISECONDS>]"
                 )
         );
     }
@@ -51,10 +50,14 @@ public class TmlInfoTest {
         String actual = new TmlInfo(
                 TmlInfo.class,
                 false,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -62,10 +65,14 @@ public class TmlInfoTest {
         String actual = new TmlInfo(
                 TmlInfo.class,
                 true,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -73,10 +80,14 @@ public class TmlInfoTest {
         String actual = new TmlInfo(
                 TmlInfo.class,
                 false,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new TmlMsg("Hello, log!")
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -84,20 +95,28 @@ public class TmlInfoTest {
         String actual = new TmlInfo(
                 TmlInfo.class,
                 false,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_4() {
         String actual = new TmlInfo(
                 TmlInfo.class,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -106,7 +125,11 @@ public class TmlInfoTest {
                 TmlInfo.class,
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -114,26 +137,38 @@ public class TmlInfoTest {
         String actual = new TmlInfo(
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_7() {
         String actual = new TmlInfo(
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_8() {
         String actual = new TmlInfo(
                 TmlInfo.class,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -142,16 +177,24 @@ public class TmlInfoTest {
                 TmlInfo.class,
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_10() {
         String actual = new TmlInfo(
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -159,17 +202,25 @@ public class TmlInfoTest {
         String actual = new TmlInfo(
                 new Template[] { new TmlMsg("Hello, log!") }
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_12() {
         String actual = new TmlInfo(
                 TmlInfo.class,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -178,33 +229,49 @@ public class TmlInfoTest {
                 TmlInfo.class,
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_14() {
         String actual = new TmlInfo(
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, log!"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_15() {
         String actual = new TmlInfo("Hello, log!").create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_16() {
         String actual = new TmlInfo(
                 TmlInfo.class,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, {}!",
                 new ArrayList<Object>() {{ add("log"); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -214,7 +281,11 @@ public class TmlInfoTest {
                 "Hello, {}!",
                 new ArrayList<Object>() {{ add("log"); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -223,18 +294,26 @@ public class TmlInfoTest {
                 "Hello, {}!",
                 new ArrayList<Object>() {{ add("log"); }}
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_19() {
         String actual = new TmlInfo(
                 TmlInfo.class,
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -244,17 +323,25 @@ public class TmlInfoTest {
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
     public void create_ctor_21() {
         String actual = new TmlInfo(
-                new TmlDateTime(),
+                new TmlTimestamp(),
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 
     @Test
@@ -263,6 +350,10 @@ public class TmlInfoTest {
                 "Hello, {}!",
                 "log"
         ).create();
-        assertTrue(actual.matches("\\[INFO] \\[.*] \\[TmlInfo] \\[MESSAGE Hello, log!]"));
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlInfo] \\[MESSAGE Hello, log!]"
+                )
+        );
     }
 }

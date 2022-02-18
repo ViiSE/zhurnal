@@ -35,6 +35,6 @@ public final class TmlClass implements Template {
     @Override
     public String create() {
         String className = tmlClass == null ? "null" : useFullName ? tmlClass.getName() : tmlClass.getSimpleName();
-        return String.format("[%s]", className);
+        return String.format("[CLASS %s]", className);
     }
 }
