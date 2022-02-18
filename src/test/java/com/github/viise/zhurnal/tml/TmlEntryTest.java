@@ -22,6 +22,7 @@ import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class TmlEntryTest {
@@ -359,5 +360,11 @@ public class TmlEntryTest {
                         "\\[LEVEL INFO] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlEntry] \\[MESSAGE Hello, log!]"
                 )
         );
+    }
+
+    @Test
+    public void level() {
+        Level lvl = new TmlEntry(Level.INFO, "Hello, {}!", "log").level();
+        assertEquals(lvl, Level.INFO);
     }
 }

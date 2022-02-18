@@ -18,12 +18,14 @@ package com.github.viise.zhurnal.tml;
 
 import com.github.viise.zhurnal.HttpMethod;
 import com.github.viise.zhurnal.HttpStatus;
+import com.github.viise.zhurnal.Level;
 import com.github.viise.zhurnal.Template;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class TmlErrorTest {
@@ -354,5 +356,11 @@ public class TmlErrorTest {
                         "\\[LEVEL ERROR] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlError] \\[MESSAGE Hello, log!]"
                 )
         );
+    }
+
+    @Test
+    public void level() {
+        Level lvl = new TmlError("Error").level();
+        assertEquals(lvl, Level.ERROR);
     }
 }
