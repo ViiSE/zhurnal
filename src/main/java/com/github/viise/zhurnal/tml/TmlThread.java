@@ -16,15 +16,25 @@
 
 package com.github.viise.zhurnal.tml;
 
-import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateNamed;
 
-public final class TmlThread implements Template {
+/**
+ * Thread template.
+ */
+public final class TmlThread implements TemplateNamed {
 
     private final Long id;
     private final String name;
     private final Boolean isAlive;
     private final Boolean isInterrupted;
 
+    /**
+     * Ctor.
+     * @param id Thread ID.
+     * @param name Thread name.
+     * @param isAlive Thread isAlive.
+     * @param isInterrupted Thread isInterrupted.
+     */
     public TmlThread(Long id, String name, Boolean isAlive, Boolean isInterrupted) {
         this.id = id;
         this.name = name;
@@ -32,6 +42,10 @@ public final class TmlThread implements Template {
         this.isInterrupted = isInterrupted;
     }
 
+    /**
+     * Ctor.
+     * @param thd Thread.
+     */
     public TmlThread(Thread thd) {
         this(
                 thd != null ? thd.getId() : null,
@@ -42,6 +56,27 @@ public final class TmlThread implements Template {
 
     }
 
+    /**
+     * Ctor.
+     * Take the current thread.
+     */
+    public TmlThread() {
+        this(Thread.currentThread());
+    }
+
+    /**
+     * Creating template
+     * {@code "[THREAD <ID:thd_id> <NAME:thd_name> <IS_ALIVE:thd_is_alive> <IS_INTERRUPTED:thd_is_interrupted>]"}, where
+     * {@code thd_id} - {@link #id}, {@code thd_name} - {@link #name}, {@code thd_is_alive} - {@link #isAlive},
+     * {@code thd_is_interrupted} - {@link #isInterrupted}.
+     * Example:
+     * <pre> {@code
+     * String tml = new TmlThread().create();
+     * // This code creating template:
+     * // [THREAD <ID:1> <NAME:main> <IS_ALIVE:true> <IS_INTERRUPTED:false>]
+     * } </pre>
+     * @return template as a String.
+     */
     @Override
     public String create() {
         return new TmlRoot(
@@ -63,5 +98,14 @@ public final class TmlThread implements Template {
                         isInterrupted
                 )
         ).create();
+    }
+
+    /**
+     * Name of thread template.
+     * @return {@code "THREAD"}.
+     */
+    @Override
+    public String name() {
+        return "THREAD";
     }
 }

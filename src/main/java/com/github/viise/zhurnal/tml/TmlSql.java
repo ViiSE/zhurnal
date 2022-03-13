@@ -16,26 +16,50 @@
 
 package com.github.viise.zhurnal.tml;
 
-import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateNamed;
 
 import java.sql.SQLException;
 
-public final class TmlSql implements Template {
+/**
+ * SQL template.
+ */
+public final class TmlSql implements TemplateNamed {
 
     private final Integer errorCode;
     private final String sqlState;
     private final String message;
 
+    /**
+     * Ctor.
+     * @param errorCode SQL error code.
+     * @param sqlState SQL state.
+     * @param message SQL message.
+     */
     public TmlSql(Integer errorCode, String sqlState, String message) {
         this.errorCode = errorCode;
         this.sqlState = sqlState;
         this.message = message;
     }
 
-    public TmlSql(SQLException slqEx) {
-        this(slqEx.getErrorCode(), slqEx.getSQLState(), slqEx.getMessage());
+    /**
+     * Ctor.
+     * @param sqlEx SQLException.
+     */
+    public TmlSql(SQLException sqlEx) {
+        this(sqlEx.getErrorCode(), sqlEx.getSQLState(), sqlEx.getMessage());
     }
 
+    /**
+     * Creating template {@code "[SQL <ERROR_CODE:err_code_val> <SQL_STATE:sql_state_val> <MESSAGE:msg>]"}, where
+     * {@code err_code_val} - error code value, {@code sql_state_val} - SQL state value, {@code message} - SQL message.
+     * Example:
+     * <pre> {@code
+     * String tml = new TmlSql(100, "OK", "Okay").create();
+     * // This code creating template:
+     * // [SQL <ERROR_CODE:100> <SQL_STATE:OK> <MESSAGE:Okay>]
+     * } </pre>
+     * @return template as a String.
+     */
     @Override
     public String create() {
         return new TmlRoot(
@@ -53,5 +77,14 @@ public final class TmlSql implements Template {
                         message
                 )
         ).create();
+    }
+
+    /**
+     * Name of SQL template.
+     * @return {@code "SQL"}.
+     */
+    @Override
+    public String name() {
+        return "SQL";
     }
 }

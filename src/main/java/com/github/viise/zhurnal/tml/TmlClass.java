@@ -16,25 +16,56 @@
 
 package com.github.viise.zhurnal.tml;
 
-import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateNamed;
 
-public final class TmlClass implements Template {
+/**
+ * Class template.
+ */
+public final class TmlClass implements TemplateNamed {
 
     private final Class<?> tmlClass;
     private final Boolean useFullName;
 
+    /**
+     * Ctor.
+     * @param tmlClass Class whose name will be used in the template as a string.
+     * @param useFullName Whether to use the fully qualified class name in the resulting string template or not.
+     */
     public TmlClass(Class<?> tmlClass, Boolean useFullName) {
         this.tmlClass = tmlClass;
         this.useFullName = useFullName;
     }
 
+    /**
+     * Ctor.
+     * @param tmlClass Class whose name will be used in the template as a string.
+     */
     public TmlClass(Class<?> tmlClass) {
         this(tmlClass, true);
     }
 
+    /**
+     * Creating template {@code "[CLASS className]"}, where className - class name from {@code tmlClass}.
+     * Example:
+     * <pre> {@code
+     * String tml = new TmlClass(Main.class).create();
+     * // This code creating template:
+     * // [CLASS com.github.viise.zhurnal.tml.Main]
+     * } </pre>
+     * @return template as a String.
+     */
     @Override
     public String create() {
         String className = tmlClass == null ? "null" : useFullName ? tmlClass.getName() : tmlClass.getSimpleName();
         return String.format("[CLASS %s]", className);
+    }
+
+    /**
+     * Name of class template.
+     * @return {@code "CLASS"}.
+     */
+    @Override
+    public String name() {
+        return "CLASS";
     }
 }

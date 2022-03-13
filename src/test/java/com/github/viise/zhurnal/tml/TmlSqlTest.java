@@ -16,6 +16,7 @@
 
 package com.github.viise.zhurnal.tml;
 
+import com.github.viise.zhurnal.TemplateNamed;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
@@ -41,5 +42,11 @@ public class TmlSqlTest {
     public void create_allNull() {
         String actual = new TmlSql(null, null, null).create();
         assertEquals(actual, "[SQL <ERROR_CODE:null> <SQL_STATE:null> <MESSAGE:null>]");
+    }
+
+    @Test
+    public void name() {
+        TemplateNamed tml = new TmlSql(new SQLException());
+        assertEquals(tml.name(), "SQL");
     }
 }

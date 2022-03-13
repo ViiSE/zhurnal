@@ -24,20 +24,43 @@ import com.github.viise.zhurnal.TemplateLeveled;
 import java.util.Arrays;
 import java.util.List;
 
-public class LgLimited implements Log<TemplateLeveled> {
+/**
+ * Limited log.
+ * Implementation limits log entries by level.
+ *
+ * @see com.github.viise.zhurnal.Level
+ */
+public final class LgLimited implements Log<TemplateLeveled> {
 
     private final Log<Template> lg;
     private final List<Level> allowedLvls;
 
+    /**
+     * Ctor.
+     * @param lg Log.
+     * @param allowedLvls List of allowed levels. If {@code TemplateLeveled} implementation have a level that is
+     *                    contained in this list, then they will be printed, otherwise - not.
+     */
     public LgLimited(Log<Template> lg, List<Level> allowedLvls) {
         this.lg = lg;
         this.allowedLvls = allowedLvls;
     }
 
+    /**
+     * Ctor.
+     * @param lg Log.
+     * @param allowedLvls Array of allowed levels. If {@code TemplateLeveled} implementation have a level that is
+     *                    contained in this array, then they will be printed, otherwise - not.
+     */
     public LgLimited(Log<Template> lg, Level... allowedLvls) {
         this(lg, Arrays.asList(allowedLvls));
     }
 
+    /**
+     * Printing leveled template. If {@code tmlLvl} have a level that is contained in {@code allowedLvls}, then they
+     * will be printed, otherwise - not.
+     * @param tmlLvl Implementation of {@link TemplateLeveled} interface. {@code tmlLvl} must not be null.
+     */
     @Override
     public void print(TemplateLeveled tmlLvl) {
         if (allowedLvls.contains(tmlLvl.level())) {

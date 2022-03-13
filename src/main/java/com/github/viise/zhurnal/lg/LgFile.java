@@ -23,14 +23,25 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
+/**
+ * File log.
+ */
 public final class LgFile implements Log<Template> {
 
     private final String fileName;
 
+    /**
+     * Ctor.
+     * @param fileName Name of the log file. Name of the log file must not be empty.
+     */
     public LgFile(String fileName) {
         this.fileName = fileName;
     }
 
+    /**
+     * Printing template into file. File will be created if it doesn't exist.
+     * @param tml Template that has been saved to a file. {@code tml} must not be null.
+     */
     @Override
     public void print(Template tml) {
         try {

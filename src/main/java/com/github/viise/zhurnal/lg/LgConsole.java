@@ -19,8 +19,15 @@ package com.github.viise.zhurnal.lg;
 import com.github.viise.zhurnal.Log;
 import com.github.viise.zhurnal.Template;
 
+/**
+ * Console Log.
+ */
 public final class LgConsole implements Log<Template> {
 
+    /**
+     * Printing template into standard output.
+     * @param tml Template to be printed. {@code tml} must not be null.
+     */
     @Override
     public void print(Template tml) {
         System.out.println(tml.create());

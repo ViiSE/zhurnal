@@ -17,6 +17,7 @@
 package com.github.viise.zhurnal.tml;
 
 import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateNamed;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -66,5 +67,11 @@ public class TmlRootTest {
     public void create_nullName() {
         String actual = new TmlRoot(null, new TmlChild("value", 1)).create();
         assertEquals(actual, "[NULL <VALUE:1>]");
+    }
+
+    @Test
+    public void name() {
+        TemplateNamed tml = new TmlRoot("root", new TmlChild("name", 2));
+        assertEquals(tml.name(), "ROOT");
     }
 }

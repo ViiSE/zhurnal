@@ -5,5 +5,6 @@
     <suite-files>
         <suite-file path="lg/log-suite.xml" />
         <suite-file path="tml/template-suite.xml" />
+        <suite-file path="wal/wall-suite.xml" />
     </suite-files>
 </suite>

@@ -17,24 +17,50 @@
 package com.github.viise.zhurnal.tml;
 
 import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateNamed;
 
 import java.util.Arrays;
 import java.util.List;
 
-public final class TmlRoot implements Template {
+/**
+ * Root template.
+ * For {@code children} templates recommended use implementation of {@link Template} interface - {@link TmlChild}.
+ */
+public final class TmlRoot implements TemplateNamed {
 
     private final String name;
     private final List<Template> children;
 
+    /**
+     * Ctor.
+     * @param name template name.
+     * @param children children templates.
+     */
     public TmlRoot(String name, Template... children) {
         this(name, Arrays.asList(children));
     }
 
+    /**
+     * Ctor.
+     * @param name template name.
+     * @param children children templates.
+     */
     public TmlRoot(String name, List<Template> children) {
         this.name = name;
         this.children = children;
     }
 
+    /**
+     * Creating template (as usually) {@code "[ROOT <children_name:children_value>]"}, where {@code children_name} -
+     * children name in uppercase, {@code children_value} - children value from {@code params}.
+     * Example:
+     * <pre> {@code
+     * String tml = new TmlRoot("root", new TmlChild("child_name", "child_value")).create();
+     * // This code creating template:
+     * // [ROOT <CHILD_NAME:child_value>]
+     * } </pre>
+     * @return template as a String.
+     */
     @Override
     public String create() {
         StringBuilder sb = new StringBuilder("[").append(new TmlBasic(name).create().toUpperCase()).append(" ");
@@ -45,5 +71,14 @@ public final class TmlRoot implements Template {
         sb.append("]");
 
         return sb.toString();
+    }
+
+    /**
+     * Name of template.
+     * @return {@code name} in uppercase.
+     */
+    @Override
+    public String name() {
+        return name.toUpperCase();
     }
 }

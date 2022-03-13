@@ -16,20 +16,48 @@
 
 package com.github.viise.zhurnal.tml;
 
-import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateNamed;
 
-public final class TmlChild implements Template {
+/**
+ * Child template.
+ */
+public final class TmlChild implements TemplateNamed {
 
     private final String name;
     private final Object value;
 
+    /**
+     * Ctor.
+     * @param name template name.
+     * @param value template value.
+     */
     public TmlChild(String name, Object value) {
         this.name = name;
         this.value = value;
     }
 
+    /**
+     * Creating template {@code "<name:value>"}, where name - {@code name} in uppercase, {@code value} - value
+     * from ctor. If {@code value} is null, then {@code value} is {@code "null"}.
+     * Example:
+     * <pre> {@code
+     * String tml = new TmlChild("class", "my class").create();
+     * // This code creating template:
+     * // <CLASS:my class>
+     * } </pre>
+     * @return template as a String.
+     */
     @Override
     public String create() {
         return String.format("<%s:%s>", new TmlBasic(name).create().toUpperCase(), new TmlBasic(value).create());
+    }
+
+    /**
+     * Name of template.
+     * @return {@code name} in uppercase.
+     */
+    @Override
+    public String name() {
+        return name.toUpperCase();
     }
 }

@@ -18,14 +18,25 @@ package com.github.viise.zhurnal.tml;
 
 import com.github.viise.zhurnal.Template;
 
+/**
+ * Basic template.
+ */
 public final class TmlBasic implements Template {
 
     private final Object value;
 
+    /**
+     * Ctor.
+     * @param value template value.
+     */
     public TmlBasic(Object value) {
         this.value = value;
     }
 
+    /**
+     * Creating template.
+     * @return {@code value} as string. If {@code value} is null, then creating {@code "null"} string.
+     */
     @Override
     public String create() {
         return value == null ? "null" : value.toString();

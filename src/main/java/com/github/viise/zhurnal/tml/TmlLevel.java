@@ -17,18 +17,44 @@
 package com.github.viise.zhurnal.tml;
 
 import com.github.viise.zhurnal.Level;
-import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateNamed;
 
-public class TmlLevel implements Template {
+/**
+ * Level template.
+ */
+public final class TmlLevel implements TemplateNamed {
 
     private final Level lvl;
 
+    /**
+     * Ctor.
+     * @param lvl {@link Level}.
+     */
     public TmlLevel(Level lvl) {
         this.lvl = lvl;
     }
 
+    /**
+     * Creating template {@code "[LEVEL level]"}, where {@code level} - {@link Level} name.
+     * Example:
+     * <pre> {@code
+     * String tml = new TmlLevel(Level.INFO).create();
+     * // This code creating template:
+     * // [LEVEL INFO]
+     * } </pre>
+     * @return template as a String.
+     */
     @Override
     public String create() {
         return String.format("[LEVEL %s]", lvl != null ? lvl.name() : "null");
+    }
+
+    /**
+     * Name of level template.
+     * @return {@code "LEVEL"}.
+     */
+    @Override
+    public String name() {
+        return "LEVEL";
     }
 }

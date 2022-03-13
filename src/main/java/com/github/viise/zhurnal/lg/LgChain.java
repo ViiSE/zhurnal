@@ -22,19 +22,37 @@ import com.github.viise.zhurnal.Template;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Chain of logs.
+ * Each log interface will print the template in order in which they were specified.
+ */
 public final class LgChain implements Log<Template> {
 
     private final List<Log<Template>> lgs;
 
+    /**
+     * Ctor.
+     * @param lgs List of logs. Each log interface will print the template in order in which they were specified.
+     *            List must not be null.
+     */
     public LgChain(List<Log<Template>> lgs) {
         this.lgs = lgs;
     }
 
+    /**
+     * Ctor.
+     * @param lgs Arrays of logs. Each log interface will print the template in order in which they were specified.
+     *            Array must not be null.
+     */
     @SafeVarargs
     public LgChain(Log<Template>... lgs) {
         this(Arrays.asList(lgs));
     }
 
+    /**
+     * Printing template for each log specified in {@code lgs} list.
+     * @param tml Template to be printing. {@code tml} must not be null.
+     */
     @Override
     public void print(Template tml) {
         lgs.forEach(lg -> lg.print(tml));

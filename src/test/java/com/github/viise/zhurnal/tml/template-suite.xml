@@ -6,14 +6,24 @@
         <classes>
             <class name="com.github.viise.zhurnal.tml.TmlBasicTest" />
             <class name="com.github.viise.zhurnal.tml.TmlChildTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlClassJsonTest" />
             <class name="com.github.viise.zhurnal.tml.TmlClassTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlTimestampJsonTest" />
             <class name="com.github.viise.zhurnal.tml.TmlTimestampTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlDurationJsonTest" />
             <class name="com.github.viise.zhurnal.tml.TmlDurationTest" />
             <class name="com.github.viise.zhurnal.tml.TmlHttpTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlHttpJsonTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlJsonTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlLevelJsonTest" />
             <class name="com.github.viise.zhurnal.tml.TmlMsgTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlMsgJsonTest" />
             <class name="com.github.viise.zhurnal.tml.TmlRootTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlSqlJsonTest" />
             <class name="com.github.viise.zhurnal.tml.TmlSqlTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlThreadJsonTest" />
             <class name="com.github.viise.zhurnal.tml.TmlThreadTest" />
+            <class name="com.github.viise.zhurnal.tml.TmlThrowableJsonTest" />
             <class name="com.github.viise.zhurnal.tml.TmlThrowableTest" />
             <class name="com.github.viise.zhurnal.tml.TmlDebugTest" />
             <class name="com.github.viise.zhurnal.tml.TmlErrorTest" />
@@ -22,6 +32,16 @@
             <class name="com.github.viise.zhurnal.tml.TmlWarnTest" />
             <class name="com.github.viise.zhurnal.tml.TmlEntryTest" />
             <class name="com.github.viise.zhurnal.tml.TmlLevelTest" />
+        </classes>
+    </test>
+    <test name="TemplateELKTest">
+        <classes>
+            <class name="com.github.viise.zhurnal.tml.elk.TmlElkDurationTest" />
+            <class name="com.github.viise.zhurnal.tml.elk.TmlElkHttpTest" />
+            <class name="com.github.viise.zhurnal.tml.elk.TmlElkSqlTest" />
+            <class name="com.github.viise.zhurnal.tml.elk.TmlElkStdTest" />
+            <class name="com.github.viise.zhurnal.tml.elk.TmlElkThreadTest" />
+            <class name="com.github.viise.zhurnal.tml.elk.TmlElkThrowableTest" />
         </classes>
     </test>
 </suite>

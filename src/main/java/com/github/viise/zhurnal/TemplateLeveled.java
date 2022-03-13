@@ -17,18 +17,16 @@
 package com.github.viise.zhurnal;
 
 /**
- * Template interface.
- * Implementations of the {@code Log} interface must use {@code Templates} to ensure that logs conform to the same
- * standard. Logs of one standard are easier to parse using Grok or Regex and so on.
+ * Leveled Template interface.
+ * Leveled template has a {@link Level}. Only some templates have a level.
  *
- * For custom {@code Log} implementation it's necessary to check constructor parameters for null. For this you can use
- * implementation of {@code Template} interface - {@link com.github.viise.zhurnal.tml.TmlBasic}.
- *
- * @see TemplateLeveled
- * @see com.github.viise.zhurnal.tml.TmlBasic
- * @see <a href="https://www.elastic.co/guide/en/logstash/current/plugins-filters-grok.html">Grok</a>
+ * @see Level
  */
 public interface TemplateLeveled extends Template {
 
+    /**
+     * Template level.
+     * @return Template level. Level must not be null.
+     */
     Level level();
 }

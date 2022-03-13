@@ -16,6 +16,12 @@
 
 package com.github.viise.zhurnal;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Http methods.
+ */
 public enum HttpMethod {
     GET,
     POST,
@@ -25,5 +31,17 @@ public enum HttpMethod {
     OPTIONS,
     TRACE,
     HEAD,
-    CONNECT
+    CONNECT;
+
+    public static final List<String> names = new ArrayList<String>() {{
+        add("GET");
+        add("POST");
+        add("PUT");
+        add("DELETE");
+        add("PATCH");
+        add("OPTIONS");
+        add("TRACE");
+        add("HEAD");
+        add("CONNECT");
+    }};
 }

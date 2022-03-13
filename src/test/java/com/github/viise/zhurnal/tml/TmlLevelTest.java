@@ -17,6 +17,7 @@
 package com.github.viise.zhurnal.tml;
 
 import com.github.viise.zhurnal.Level;
+import com.github.viise.zhurnal.TemplateNamed;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -33,5 +34,11 @@ public class TmlLevelTest {
     public void create_nullLevel() {
         String actual = new TmlLevel(null).create();
         assertEquals(actual, "[LEVEL null]");
+    }
+
+    @Test
+    public void name() {
+        TemplateNamed tml = new TmlLevel(Level.INFO);
+        assertEquals(tml.name(), "LEVEL");
     }
 }

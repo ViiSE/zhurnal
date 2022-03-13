@@ -16,6 +16,7 @@
 
 package com.github.viise.zhurnal.tml;
 
+import com.github.viise.zhurnal.TemplateNamed;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -44,5 +45,11 @@ public class TmlThreadTest {
     public void create_nullParams() {
         String actual = new TmlThread(null, null, null, null).create();
         assertEquals(actual, "[THREAD <ID:null> <NAME:null> <IS_ALIVE:null> <IS_INTERRUPTED:null>]");
+    }
+
+    @Test
+    public void name() {
+        TemplateNamed tml = new TmlThread();
+        assertEquals(tml.name(), "THREAD");
     }
 }

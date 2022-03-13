@@ -18,6 +18,7 @@ package com.github.viise.zhurnal.tml;
 
 import com.github.viise.zhurnal.HttpMethod;
 import com.github.viise.zhurnal.HttpStatus;
+import com.github.viise.zhurnal.TemplateNamed;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -46,5 +47,11 @@ public class TmlHttpTest {
     public void create_nullStatus() {
         String actual = new TmlHttp(HttpMethod.GET, "/cats/1", null).create();
         assertEquals(actual, "[HTTP <METHOD:GET> <ENDPOINT:/cats/1> <STATUS:null>]");
+    }
+
+    @Test
+    public void name() {
+        TemplateNamed tml = new TmlHttp(HttpMethod.GET, "users", HttpStatus.OK);
+        assertEquals(tml.name(), "HTTP");
     }
 }

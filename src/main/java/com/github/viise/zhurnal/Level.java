@@ -16,10 +16,24 @@
 
 package com.github.viise.zhurnal;
 
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Log levels.
+ */
 public enum Level {
     INFO,
     WARN,
     ERROR,
     TRACE,
-    DEBUG
+    DEBUG;
+
+    public static final List<String> names = new ArrayList<String>() {{
+        add("INFO");
+        add("WARN");
+        add("ERROR");
+        add("TRACE");
+        add("DEBUG");
+    }};
 }

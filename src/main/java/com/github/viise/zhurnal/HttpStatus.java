@@ -17,7 +17,7 @@
 package com.github.viise.zhurnal;
 
 /**
- * HttpStatuses
+ * Http statuses.
  * @see <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">HTTP response status codes</a>
  */
 public enum HttpStatus {

@@ -16,6 +16,7 @@
 
 package com.github.viise.zhurnal.tml;
 
+import com.github.viise.zhurnal.TemplateNamed;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
@@ -46,5 +47,11 @@ public class TmlDurationTest {
     public void create_nullDuration() {
         String actual = new TmlDuration(null).create();
         assertEquals(actual, "[DURATION <VALUE:null> <UNIT:MILLISECONDS>]");
+    }
+
+    @Test
+    public void name() {
+        TemplateNamed tml = new TmlDuration(1L);
+        assertEquals(tml.name(), "DURATION");
     }
 }

@@ -16,6 +16,7 @@
 
 package com.github.viise.zhurnal.tml;
 
+import com.github.viise.zhurnal.TemplateNamed;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -38,5 +39,11 @@ public class TmlChildTest {
     public void create_nullValue() {
         String actual = new TmlChild("value", null).create();
         assertEquals(actual, "<VALUE:null>");
+    }
+
+    @Test
+    public void name() {
+        TemplateNamed tmlChild = new TmlChild("value", 10);
+        assertEquals(tmlChild.name(), "VALUE");
     }
 }

@@ -110,13 +110,13 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_4() {
         String actual = new TmlWarn(
-                TmlWarn.class,
-                new TmlTimestamp(),
-                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
+                TmlWarnTest.class,
+                false,
+                "Hello, log!"
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS TmlWarnTest] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -124,12 +124,12 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_5() {
         String actual = new TmlWarn(
-                TmlWarn.class,
-                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
+                false,
+                "Hello, log!"
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS TmlWarn] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -137,11 +137,14 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_6() {
         String actual = new TmlWarn(
-                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
+                TmlWarnTest.class,
+                false,
+                "Hello, {}!",
+                new ArrayList<Object>() {{ add("log"); }}
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS TmlWarnTest] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -149,12 +152,14 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_7() {
         String actual = new TmlWarn(
-                new TmlTimestamp(),
-                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
+                TmlWarnTest.class,
+                false,
+                "Hello, {}!",
+                "log"
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS TmlWarnTest] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -162,13 +167,13 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_8() {
         String actual = new TmlWarn(
-                TmlWarn.class,
-                new TmlTimestamp(),
-                new Template[] { new TmlMsg("Hello, log!") }
+                false,
+                "Hello, {}!",
+                new ArrayList<Object>() {{ add("log"); }}
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS TmlWarn] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -176,21 +181,23 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_9() {
         String actual = new TmlWarn(
-                TmlWarn.class,
-                new Template[] { new TmlMsg("Hello, log!") }
+                false,
+                "Hello, {}!",
+                "log"
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS TmlWarn] \\[MESSAGE Hello, log!]"
                 )
         );
     }
-
+    
     @Test
     public void create_ctor_10() {
         String actual = new TmlWarn(
+                TmlWarn.class,
                 new TmlTimestamp(),
-                new Template[] { new TmlMsg("Hello, log!") }
+                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
         assertTrue(
                 actual.matches(
@@ -202,7 +209,8 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_11() {
         String actual = new TmlWarn(
-                new Template[] { new TmlMsg("Hello, log!") }
+                TmlWarn.class,
+                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
         assertTrue(
                 actual.matches(
@@ -214,9 +222,7 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_12() {
         String actual = new TmlWarn(
-                TmlWarn.class,
-                new TmlTimestamp(),
-                "Hello, log!"
+                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
         assertTrue(
                 actual.matches(
@@ -228,8 +234,8 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_13() {
         String actual = new TmlWarn(
-                TmlWarn.class,
-                "Hello, log!"
+                new TmlTimestamp(),
+                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
         assertTrue(
                 actual.matches(
@@ -241,8 +247,9 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_14() {
         String actual = new TmlWarn(
+                TmlWarn.class,
                 new TmlTimestamp(),
-                "Hello, log!"
+                new Template[] { new TmlMsg("Hello, log!") }
         ).create();
         assertTrue(
                 actual.matches(
@@ -253,7 +260,10 @@ public class TmlWarnTest {
 
     @Test
     public void create_ctor_15() {
-        String actual = new TmlWarn("Hello, log!").create();
+        String actual = new TmlWarn(
+                TmlWarn.class,
+                new Template[] { new TmlMsg("Hello, log!") }
+        ).create();
         assertTrue(
                 actual.matches(
                         "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
@@ -264,10 +274,8 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_16() {
         String actual = new TmlWarn(
-                TmlWarn.class,
                 new TmlTimestamp(),
-                "Hello, {}!",
-                new ArrayList<Object>() {{ add("log"); }}
+                new Template[] { new TmlMsg("Hello, log!") }
         ).create();
         assertTrue(
                 actual.matches(
@@ -279,9 +287,7 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_17() {
         String actual = new TmlWarn(
-                TmlWarn.class,
-                "Hello, {}!",
-                new ArrayList<Object>() {{ add("log"); }}
+                new Template[] { new TmlMsg("Hello, log!") }
         ).create();
         assertTrue(
                 actual.matches(
@@ -293,8 +299,9 @@ public class TmlWarnTest {
     @Test
     public void create_ctor_18() {
         String actual = new TmlWarn(
-                "Hello, {}!",
-                new ArrayList<Object>() {{ add("log"); }}
+                TmlWarn.class,
+                new TmlTimestamp(),
+                "Hello, log!"
         ).create();
         assertTrue(
                 actual.matches(
@@ -307,6 +314,84 @@ public class TmlWarnTest {
     public void create_ctor_19() {
         String actual = new TmlWarn(
                 TmlWarn.class,
+                "Hello, log!"
+        ).create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_20() {
+        String actual = new TmlWarn(
+                new TmlTimestamp(),
+                "Hello, log!"
+        ).create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_21() {
+        String actual = new TmlWarn("Hello, log!").create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_22() {
+        String actual = new TmlWarn(
+                TmlWarn.class,
+                new TmlTimestamp(),
+                "Hello, {}!",
+                new ArrayList<Object>() {{ add("log"); }}
+        ).create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_23() {
+        String actual = new TmlWarn(
+                TmlWarn.class,
+                "Hello, {}!",
+                new ArrayList<Object>() {{ add("log"); }}
+        ).create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_24() {
+        String actual = new TmlWarn(
+                "Hello, {}!",
+                new ArrayList<Object>() {{ add("log"); }}
+        ).create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL WARN] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlWarn] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_25() {
+        String actual = new TmlWarn(
+                TmlWarn.class,
                 new TmlTimestamp(),
                 "Hello, {}!",
                 "log"
@@ -319,7 +404,7 @@ public class TmlWarnTest {
     }
 
     @Test
-    public void create_ctor_20() {
+    public void create_ctor_26() {
         String actual = new TmlWarn(
                 TmlWarn.class,
                 "Hello, {}!",
@@ -333,7 +418,7 @@ public class TmlWarnTest {
     }
 
     @Test
-    public void create_ctor_21() {
+    public void create_ctor_27() {
         String actual = new TmlWarn(
                 new TmlTimestamp(),
                 "Hello, {}!",
@@ -347,7 +432,7 @@ public class TmlWarnTest {
     }
 
     @Test
-    public void create_ctor_22() {
+    public void create_ctor_28() {
         String actual = new TmlWarn(
                 "Hello, {}!",
                 "log"

@@ -16,24 +16,47 @@
 
 package com.github.viise.zhurnal.tml;
 
-import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateNamed;
 
 import java.util.concurrent.TimeUnit;
 
-public final class TmlDuration implements Template {
+/**
+ * Duration template.
+ */
+public final class TmlDuration implements TemplateNamed {
 
     private final Long duration;
     private final TimeUnit unit;
 
+    /**
+     * Ctor.
+     * @param duration Duration value.
+     * @param unit {@link TimeUnit}.
+     */
     public TmlDuration(Long duration, TimeUnit unit) {
         this.duration = duration;
         this.unit = unit;
     }
 
+    /**
+     * Ctor.
+     * @param duration Duration value.
+     */
     public TmlDuration(Long duration) {
         this(duration, TimeUnit.MILLISECONDS);
     }
 
+    /**
+     * Creating template {@code "[DURATION <VALUE:duration_value> <UNIT:unit_name>]"}, where {@code duration_value} -
+     * {@link #duration}, {@code unit_name} - {@link #unit} name.
+     * Example:
+     * <pre> {@code
+     * String tml = new TmlDuration(200L, TimeUnit.MILLISECOND).create();
+     * // This code creating template:
+     * // [DURATION <VALUE:200> <UNIT:MILLISECONDS>]
+     * } </pre>
+     * @return template as a String.
+     */
     @Override
     public String create() {
         return new TmlRoot(
@@ -47,5 +70,14 @@ public final class TmlDuration implements Template {
                         unit != null ? unit.name() : "null"
                 )
         ).create();
+    }
+
+    /**
+     * Name of duration template.
+     * @return {@code "DURATION"}.
+     */
+    @Override
+    public String name() {
+        return "DURATION";
     }
 }

@@ -16,31 +16,76 @@
 
 package com.github.viise.zhurnal.tml;
 
-import com.github.viise.zhurnal.Template;
+import com.github.viise.zhurnal.TemplateNamed;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public final class TmlMsg implements Template {
+/**
+ * Message template. This template supports parameter substitution via {@code {}}. For example:
+ * <pre> {@code
+ * String tmlMsg = new TmlMsg("Hello, {}!", "log").create();
+ * // This code creating template:
+ * // [MESSAGE Hello, log!]
+ * } </pre>
+ * If {@code {}} in {@code msg} more than {@code params} size, then {@code msg} will contain {@code {}}. For example:
+ * <pre> {@code
+ * String tmlMsg = new TmlMsg("Hello, {}! Today is {}.", "log").create();
+ * // This code creating template:
+ * // [MESSAGE Hello, log! Today is {}.]
+ * } </pre>
+ * If {@code {}} in {@code msg} less than {@code params}, then not all {@code params} will be included in {@code msg}.
+ * For example:
+ * <pre> {@code
+ * String tmlMsg - new TmlMsg("Hello, {}!", "log", "today").create();
+ * // This code creating template:
+ * // [MESSAGE Hello, log!]
+ * } </pre>
+ */
+public final class TmlMsg implements TemplateNamed {
 
     private final String msg;
     private final List<Object> params;
 
-    public TmlMsg(String name) {
-        this(name, new ArrayList<>());
+    /**
+     * Ctor.
+     * @param msg Message.
+     */
+    public TmlMsg(String msg) {
+        this(msg, new ArrayList<>());
     }
 
+    /**
+     * Ctor.
+     * @param msg Message.
+     * @param params Params in message.
+     */
     public TmlMsg(String msg, Object... params) {
         this.msg = msg;
         this.params = Arrays.asList(params);
     }
 
-    public TmlMsg(String name, List<Object> params) {
-        this.msg = name;
+    /**
+     * Ctor.
+     * @param msg Message.
+     * @param params Params in message.
+     */
+    public TmlMsg(String msg, List<Object> params) {
+        this.msg = msg;
         this.params = params;
     }
 
+    /**
+     * Creating template {@code "[MESSAGE message]"}, where {@code message} - {@link #msg}.
+     * Example:
+     * <pre> {@code
+     * String tml = new TmlMsg("Hello, {}!", "log").create();
+     * // This code creating template:
+     * // [MESSAGE Hello, log!]
+     * } </pre>
+     * @return template as a String.
+     */
     @Override
     public String create() {
         if (!(params == null || params.isEmpty())) {
@@ -66,5 +111,14 @@ public final class TmlMsg implements Template {
                 "MESSAGE",
                 new TmlBasic(msg)
         ).create();
+    }
+
+    /**
+     * Name of message template.
+     * @return {@code "MESSAGE"}.
+     */
+    @Override
+    public String name() {
+        return "MESSAGE";
     }
 }

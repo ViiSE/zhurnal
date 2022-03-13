@@ -1,5 +1,6 @@
 package com.github.viise.zhurnal.tml;
 
+import com.github.viise.zhurnal.TemplateNamed;
 import org.testng.annotations.Test;
 
 import java.time.LocalDate;
@@ -51,5 +52,11 @@ public class TmlTimestampTest {
         LocalDateTime ldt = LocalDateTime.now();
         String actual = new TmlTimestamp(ldt, dtf).create();
         assertEquals(actual, String.format("[TIMESTAMP %s]", DateTimeFormatter.ISO_DATE_TIME.format(ldt)));
+    }
+
+    @Test
+    public void name() {
+        TemplateNamed tml = new TmlTimestamp();
+        assertEquals(tml.name(), "TIMESTAMP");
     }
 }

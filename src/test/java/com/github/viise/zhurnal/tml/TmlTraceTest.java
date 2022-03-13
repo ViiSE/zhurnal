@@ -110,13 +110,13 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_4() {
         String actual = new TmlTrace(
-                TmlTrace.class,
-                new TmlTimestamp(),
-                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
+                TmlTraceTest.class,
+                false,
+                "Hello, log!"
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS TmlTraceTest] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -124,12 +124,12 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_5() {
         String actual = new TmlTrace(
-                TmlTrace.class,
-                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
+                false,
+                "Hello, log!"
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS TmlTrace] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -137,11 +137,14 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_6() {
         String actual = new TmlTrace(
-                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
+                TmlTraceTest.class,
+                false,
+                "Hello, {}!",
+                new ArrayList<Object>() {{ add("log"); }}
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS TmlTraceTest] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -149,12 +152,14 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_7() {
         String actual = new TmlTrace(
-                new TmlTimestamp(),
-                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
+                TmlTraceTest.class,
+                false,
+                "Hello, {}!",
+                "log"
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS TmlTraceTest] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -162,13 +167,13 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_8() {
         String actual = new TmlTrace(
-                TmlTrace.class,
-                new TmlTimestamp(),
-                new Template[] { new TmlMsg("Hello, log!") }
+                false,
+                "Hello, {}!",
+                new ArrayList<Object>() {{ add("log"); }}
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS TmlTrace] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -176,12 +181,13 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_9() {
         String actual = new TmlTrace(
-                TmlTrace.class,
-                new Template[] { new TmlMsg("Hello, log!") }
+                false,
+                "Hello, {}!",
+                "log"
         ).create();
         assertTrue(
                 actual.matches(
-                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS TmlTrace] \\[MESSAGE Hello, log!]"
                 )
         );
     }
@@ -189,8 +195,9 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_10() {
         String actual = new TmlTrace(
+                TmlTrace.class,
                 new TmlTimestamp(),
-                new Template[] { new TmlMsg("Hello, log!") }
+                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
         assertTrue(
                 actual.matches(
@@ -202,7 +209,8 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_11() {
         String actual = new TmlTrace(
-                new Template[] { new TmlMsg("Hello, log!") }
+                TmlTrace.class,
+                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
         assertTrue(
                 actual.matches(
@@ -214,9 +222,7 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_12() {
         String actual = new TmlTrace(
-                TmlTrace.class,
-                new TmlTimestamp(),
-                "Hello, log!"
+                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
         assertTrue(
                 actual.matches(
@@ -228,8 +234,8 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_13() {
         String actual = new TmlTrace(
-                TmlTrace.class,
-                "Hello, log!"
+                new TmlTimestamp(),
+                new ArrayList<Template>() {{ add(new TmlMsg("Hello, log!")); }}
         ).create();
         assertTrue(
                 actual.matches(
@@ -241,8 +247,9 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_14() {
         String actual = new TmlTrace(
+                TmlTrace.class,
                 new TmlTimestamp(),
-                "Hello, log!"
+                new Template[] { new TmlMsg("Hello, log!") }
         ).create();
         assertTrue(
                 actual.matches(
@@ -253,7 +260,10 @@ public class TmlTraceTest {
 
     @Test
     public void create_ctor_15() {
-        String actual = new TmlTrace("Hello, log!").create();
+        String actual = new TmlTrace(
+                TmlTrace.class,
+                new Template[] { new TmlMsg("Hello, log!") }
+        ).create();
         assertTrue(
                 actual.matches(
                         "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
@@ -264,10 +274,8 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_16() {
         String actual = new TmlTrace(
-                TmlTrace.class,
                 new TmlTimestamp(),
-                "Hello, {}!",
-                new ArrayList<Object>() {{ add("log"); }}
+                new Template[] { new TmlMsg("Hello, log!") }
         ).create();
         assertTrue(
                 actual.matches(
@@ -279,9 +287,7 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_17() {
         String actual = new TmlTrace(
-                TmlTrace.class,
-                "Hello, {}!",
-                new ArrayList<Object>() {{ add("log"); }}
+                new Template[] { new TmlMsg("Hello, log!") }
         ).create();
         assertTrue(
                 actual.matches(
@@ -293,8 +299,9 @@ public class TmlTraceTest {
     @Test
     public void create_ctor_18() {
         String actual = new TmlTrace(
-                "Hello, {}!",
-                new ArrayList<Object>() {{ add("log"); }}
+                TmlTrace.class,
+                new TmlTimestamp(),
+                "Hello, log!"
         ).create();
         assertTrue(
                 actual.matches(
@@ -307,6 +314,84 @@ public class TmlTraceTest {
     public void create_ctor_19() {
         String actual = new TmlTrace(
                 TmlTrace.class,
+                "Hello, log!"
+        ).create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_20() {
+        String actual = new TmlTrace(
+                new TmlTimestamp(),
+                "Hello, log!"
+        ).create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_21() {
+        String actual = new TmlTrace("Hello, log!").create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_22() {
+        String actual = new TmlTrace(
+                TmlTrace.class,
+                new TmlTimestamp(),
+                "Hello, {}!",
+                new ArrayList<Object>() {{ add("log"); }}
+        ).create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_23() {
+        String actual = new TmlTrace(
+                TmlTrace.class,
+                "Hello, {}!",
+                new ArrayList<Object>() {{ add("log"); }}
+        ).create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_24() {
+        String actual = new TmlTrace(
+                "Hello, {}!",
+                new ArrayList<Object>() {{ add("log"); }}
+        ).create();
+        assertTrue(
+                actual.matches(
+                        "\\[LEVEL TRACE] \\[TIMESTAMP .*] \\[CLASS com\\.github\\.viise\\.zhurnal\\.tml\\.TmlTrace] \\[MESSAGE Hello, log!]"
+                )
+        );
+    }
+
+    @Test
+    public void create_ctor_25() {
+        String actual = new TmlTrace(
+                TmlTrace.class,
                 new TmlTimestamp(),
                 "Hello, {}!",
                 "log"
@@ -319,7 +404,7 @@ public class TmlTraceTest {
     }
 
     @Test
-    public void create_ctor_20() {
+    public void create_ctor_26() {
         String actual = new TmlTrace(
                 TmlTrace.class,
                 "Hello, {}!",
@@ -333,7 +418,7 @@ public class TmlTraceTest {
     }
 
     @Test
-    public void create_ctor_21() {
+    public void create_ctor_27() {
         String actual = new TmlTrace(
                 new TmlTimestamp(),
                 "Hello, {}!",
@@ -347,7 +432,7 @@ public class TmlTraceTest {
     }
 
     @Test
-    public void create_ctor_22() {
+    public void create_ctor_28() {
         String actual = new TmlTrace(
                 "Hello, {}!",
                 "log"

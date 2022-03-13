@@ -8,6 +8,8 @@
             <class name="com.github.viise.zhurnal.lg.LgConsoleTest" />
             <class name="com.github.viise.zhurnal.lg.LgFileTest" />
             <class name="com.github.viise.zhurnal.lg.LgLimitedTest" />
+            <class name="com.github.viise.zhurnal.lg.LgTcpTest" />
+            <class name="com.github.viise.zhurnal.lg.LgUdpTest" />
         </classes>
     </test>
 </suite>

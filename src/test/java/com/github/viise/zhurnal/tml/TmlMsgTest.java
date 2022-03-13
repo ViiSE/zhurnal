@@ -1,5 +1,6 @@
 package com.github.viise.zhurnal.tml;
 
+import com.github.viise.zhurnal.TemplateNamed;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -72,5 +73,11 @@ public class TmlMsgTest {
     public void create_withoutParams() {
         String actual = new TmlMsg("Hello, World!").create();
         assertEquals(actual, "[MESSAGE Hello, World!]");
+    }
+
+    @Test
+    public void name() {
+        TemplateNamed tml = new TmlMsg("");
+        assertEquals(tml.name(), "MESSAGE");
     }
 }

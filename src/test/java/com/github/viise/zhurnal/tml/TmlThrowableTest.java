@@ -16,6 +16,7 @@
 
 package com.github.viise.zhurnal.tml;
 
+import com.github.viise.zhurnal.TemplateNamed;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -107,5 +108,11 @@ public class TmlThrowableTest {
     public void create_thr_null_5() {
         String actual = new TmlThrowable(null, null).create();
         assertEquals(actual, "[THROWABLE <MESSAGE:null> <STACK_TRACE:null>]");
+    }
+
+    @Test
+    public void name() {
+        TemplateNamed tml = new TmlThrowable(new Throwable());
+        assertEquals(tml.name(), "THROWABLE");
     }
 }

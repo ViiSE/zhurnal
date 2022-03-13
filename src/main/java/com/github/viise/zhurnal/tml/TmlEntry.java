@@ -29,31 +29,31 @@ public final class TmlEntry implements TemplateLeveled {
     private final Class<?> lgClass;
     private final Boolean useFullName;
     private final Level lvl;
-    private final Template tmlDateTime;
+    private final Template tmlTimestamp;
     private final List<Template> tmls;
 
     /* Ctor 1*/
-    public TmlEntry(Class<?> lgClass, Boolean useFullName, Level lvl, Template tmlDateTime, List<Template> tmls) {
+    public TmlEntry(Class<?> lgClass, Boolean useFullName, Level lvl, Template tmlTimestamp, List<Template> tmls) {
         this.lgClass = lgClass;
         this.useFullName = useFullName;
         this.lvl = lvl;
-        this.tmlDateTime = tmlDateTime;
+        this.tmlTimestamp = tmlTimestamp;
         this.tmls = tmls;
     }
 
     /* Ctor 2 */
-    public TmlEntry(Class<?> lgClass, Boolean useFullName, Level lvl, Template tmlDateTime, Template... tmls) {
-        this(lgClass, useFullName, lvl, tmlDateTime, Arrays.asList(tmls));
+    public TmlEntry(Class<?> lgClass, Boolean useFullName, Level lvl, Template tmlTimestamp, Template... tmls) {
+        this(lgClass, useFullName, lvl, tmlTimestamp, Arrays.asList(tmls));
     }
 
     /* Ctor 3 */
-    public TmlEntry(Class<?> lgClass, Boolean useFullName, Level lvl, Template tmlDateTime, String msg) {
-        this(lgClass, useFullName, lvl, tmlDateTime, new TmlMsg(msg));
+    public TmlEntry(Class<?> lgClass, Boolean useFullName, Level lvl, Template tmlTimestamp, String msg) {
+        this(lgClass, useFullName, lvl, tmlTimestamp, new TmlMsg(msg));
     }
 
     /* Ctor 4 */
-    public TmlEntry(Class<?> lgClass, Level lvl, Template tmlDateTime, List<Template> tmls) {
-        this(lgClass, true, lvl, tmlDateTime, tmls);
+    public TmlEntry(Class<?> lgClass, Level lvl, Template tmlTimestamp, List<Template> tmls) {
+        this(lgClass, true, lvl, tmlTimestamp, tmls);
     }
 
     /* Ctor 5 */
@@ -67,13 +67,13 @@ public final class TmlEntry implements TemplateLeveled {
     }
 
     /* Ctor 7 */
-    public TmlEntry(Level lvl, Template tmlDateTime, List<Template> tmls) {
-        this(TmlEntry.class, true, lvl, tmlDateTime, tmls);
+    public TmlEntry(Level lvl, Template tmlTimestamp, List<Template> tmls) {
+        this(TmlEntry.class, true, lvl, tmlTimestamp, tmls);
     }
 
     /* Ctor 8 */
-    public TmlEntry(Class<?> lgClass, Level lvl, Template tmlDateTime, Template... tmls) {
-        this(lgClass, lvl, tmlDateTime, Arrays.asList(tmls));
+    public TmlEntry(Class<?> lgClass, Level lvl, Template tmlTimestamp, Template... tmls) {
+        this(lgClass, lvl, tmlTimestamp, Arrays.asList(tmls));
     }
 
     /* Ctor 9 */
@@ -82,8 +82,8 @@ public final class TmlEntry implements TemplateLeveled {
     }
 
     /* Ctor 10 */
-    public TmlEntry(Level lvl, Template tmlDateTime, Template... tmls) {
-        this(TmlEntry.class, lvl, tmlDateTime, Arrays.asList(tmls));
+    public TmlEntry(Level lvl, Template tmlTimestamp, Template... tmls) {
+        this(TmlEntry.class, lvl, tmlTimestamp, Arrays.asList(tmls));
     }
 
     /* Ctor 11 */
@@ -92,8 +92,8 @@ public final class TmlEntry implements TemplateLeveled {
     }
 
     /* Ctor 12 */
-    public TmlEntry(Class<?> lgClass, Level lvl, Template tmlDateTime, String msg) {
-        this(lgClass, lvl, tmlDateTime, new Template[] { new TmlMsg(msg, new ArrayList<>()) });
+    public TmlEntry(Class<?> lgClass, Level lvl, Template tmlTimestamp, String msg) {
+        this(lgClass, lvl, tmlTimestamp, new Template[] { new TmlMsg(msg, new ArrayList<>()) });
     }
 
     /* Ctor 13 */
@@ -102,8 +102,8 @@ public final class TmlEntry implements TemplateLeveled {
     }
 
     /* Ctor 14 */
-    public TmlEntry(Level lvl, Template tmlDateTime, String msg) {
-        this(TmlEntry.class, lvl, tmlDateTime, msg);
+    public TmlEntry(Level lvl, Template tmlTimestamp, String msg) {
+        this(TmlEntry.class, lvl, tmlTimestamp, msg);
     }
 
     /* Ctor 15 */
@@ -112,8 +112,8 @@ public final class TmlEntry implements TemplateLeveled {
     }
 
     /* Ctor 16 */
-    public TmlEntry(Class<?> lgClass, Level lvl, Template tmlDateTime, String msg, List<Object> params) {
-        this(lgClass, lvl, tmlDateTime, new Template[] { new TmlMsg(msg, params) });
+    public TmlEntry(Class<?> lgClass, Level lvl, Template tmlTimestamp, String msg, List<Object> params) {
+        this(lgClass, lvl, tmlTimestamp, new Template[] { new TmlMsg(msg, params) });
     }
 
     /* Ctor 17 */
@@ -127,8 +127,8 @@ public final class TmlEntry implements TemplateLeveled {
     }
 
     /* Ctor 19 */
-    public TmlEntry(Class<?> lgClass, Level lvl, Template tmlDateTime, String msg, Object... params) {
-        this(lgClass, lvl, tmlDateTime, new Template[] { new TmlMsg(msg, params) });
+    public TmlEntry(Class<?> lgClass, Level lvl, Template tmlTimestamp, String msg, Object... params) {
+        this(lgClass, lvl, tmlTimestamp, new Template[] { new TmlMsg(msg, params) });
     }
 
     /* Ctor 20 */
@@ -137,8 +137,8 @@ public final class TmlEntry implements TemplateLeveled {
     }
 
     /* Ctor 21 */
-    public TmlEntry(Level lvl, Template tmlDateTime, String msg, Object... params) {
-        this(TmlEntry.class, lvl, tmlDateTime, new Template[] { new TmlMsg(msg, params) });
+    public TmlEntry(Level lvl, Template tmlTimestamp, String msg, Object... params) {
+        this(TmlEntry.class, lvl, tmlTimestamp, new Template[] { new TmlMsg(msg, params) });
     }
 
     /* Ctor 22 */
@@ -150,7 +150,7 @@ public final class TmlEntry implements TemplateLeveled {
     public String create() {
         StringBuilder sb = new StringBuilder(new TmlLevel(lvl).create())
                 .append(" ")
-                .append(tmlDateTime.create())
+                .append(tmlTimestamp.create())
                 .append(" ")
                 .append(new TmlClass(lgClass, useFullName).create());
         tmls.forEach(tml -> sb.append(" ").append(tml.create()));
