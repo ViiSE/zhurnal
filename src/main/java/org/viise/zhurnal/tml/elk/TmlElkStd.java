@@ -48,8 +48,8 @@ public final class TmlElkStd implements Template {
     }
 
     /**
-     * Creating standard ELK log. If {@code "thread_name"}is null, then the name of the current thread is taken.
-     * If {@code "stack_trace"}is not presented, then this field will not be presented in resulting string. If
+     * Creating standard ELK log. If {@code "thread_name"} is null, then the name of the current thread is taken.
+     * If {@code "stack_trace"} is not presented, then this field will not be presented in resulting string. If
      * {@link #tml} is null, then method return
      * {@code {"level":null,"thread_name":null,"logger_name":null,"stack_trace":null,"message":null,"timestamp":null}}.
      *
