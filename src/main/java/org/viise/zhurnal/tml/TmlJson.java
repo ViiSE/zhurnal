@@ -16,25 +16,61 @@
 
 package org.viise.zhurnal.tml;
 
+import org.json.JSONObject;
 import org.viise.zhurnal.Template;
 import org.viise.zhurnal.TemplateNamed;
-import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * JSON Template.
+ * This implementation uses a list of {@link TemplateNamed} implementations and added them in root JSON. For achieve
+ * that, {@link TemplateNamed} implementation must create JSON string.
+ */
 public final class TmlJson implements Template {
 
     private final List<TemplateNamed> tmls;
 
+    /**
+     * Ctor.
+     * @param tmls List of {@link TemplateNamed} implementations. {@link TemplateNamed} implementations must create JSON
+     *            string.
+     */
     public TmlJson(List<TemplateNamed> tmls) {
         this.tmls = tmls;
     }
 
+    /**
+     * Ctor.
+     * @param tmls Array of {@link TemplateNamed} implementations. {@link TemplateNamed} implementations must create
+     *             JSON string.
+     */
     public TmlJson(TemplateNamed... tmls) {
         this(tmls != null ? Arrays.asList(tmls) : null);
     }
 
+    /**
+     * Creating JSON template. Example:
+     * <pre> {@code
+     * String tmlStr = new TmlInfo(
+     *         new Template[] {
+     *                 new TmlDuration(200L, TimeUnit.MILLISECONDS),
+     *                 new TmlMsg("Hello, {}!", "log")
+     *         }
+     * ).create();
+     *
+     * String actual = new TmlJson(
+     *         new TmlDurationJson(tmlStr),
+     *         new TmlMsgJson(tmlStr)
+     * ).create();
+     * // This code creating template:
+     * // {"duration":{"unit":"MILLISECONDS","value":200},"message":"Hello, log!"}
+     * } </pre>
+     * If {@link #tmls} null or empty, then method return {@code {}}.
+     *
+     * @return template as a JSON String.
+     */
     @Override
     public String create() {
         if (tmls == null || tmls.isEmpty()) {
