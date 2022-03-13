@@ -21,14 +21,40 @@ import org.viise.zhurnal.tml.*;
 import org.json.JSONObject;
 import org.viise.zhurnal.tml.*;
 
+/**
+ * Standard ELK Template.
+ * Standard ELK log:
+ * <pre> {@code
+ * {
+ *   "level": "INFO",
+ *   "thread_name": "main",
+ *   "logger_name": "org.viise.zhurnal.tml.TmlInfo",
+ *   "message": "Hello, log!",
+ *   "timestamp": "2022-03-14T02:08:59.137"
+ * }
+ * } </pre>
+ */
 public final class TmlElkStd implements Template {
 
     private final Template tml;
 
+    /**
+     * Ctor.
+     * @param tml Template to be used to generate standard ELK log. It's recommended to use
+     * {@link org.viise.zhurnal.TemplateLeveled} implementations.
+     */
     public TmlElkStd(Template tml) {
         this.tml = tml;
     }
 
+    /**
+     * Creating standard ELK log. If {@code "thread_name"}is null, then the name of the current thread is taken.
+     * If {@code "stack_trace"}is not presented, then this field will not be presented in resulting string. If
+     * {@link #tml} is null, then method return
+     * {@code {"level":null,"thread_name":null,"logger_name":null,"stack_trace":null,"message":null,"timestamp":null}}.
+     *
+     * @return Standard ELK log.
+     */
     @Override
     public String create() {
         JSONObject jObj = new JSONObject();
