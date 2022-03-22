@@ -20,16 +20,68 @@ import org.viise.zhurnal.Template;
 import org.viise.zhurnal.tml.TmlSqlJson;
 import org.json.JSONObject;
 
+/**
+ * SQL ELK Template.
+ * Added in main ELK log ({@link #tmlElk}) :
+ * <pre> {@code
+ * {
+ *   "sql_error_code": "200",
+ *   "sql_state": "OK",
+ *   "sql_message": "Okay"
+ * }
+ * } </pre>
+ */
 public final class TmlElkSql implements Template {
 
     private final Template tmlElk;
     private final Template tml;
 
+    /**
+     * Ctor.
+     *
+     * @param tmlElk The main template, which will be supplemented by {@link #tml}. {@link #tmlElk} is immutable.
+     * @param tml    Template to be used to generate SQL ELK log. It's recommended to use
+     *               {@link org.viise.zhurnal.tml.TmlSql} implementations.
+     */
     public TmlElkSql(Template tmlElk, Template tml) {
         this.tmlElk = tmlElk;
         this.tml = tml;
     }
 
+    /**
+     * Creating ELK log with SQL information. For example:
+     * <pre> {@code
+     * Template tmlElk = new TmlElkStd(new TmlInfo("Hello, {}!", "log"));
+     *
+     * String actual = new TmlElkSql(
+     *         tmlElk,
+     *         new TmlSql(200, "OK", "Okay")
+     * ).create();
+     * } </pre>
+     * Or:
+     * <pre> {@code
+     * Template tmlElk = new TmlElkStd(new TmlInfo("Hello, {}!", "log"));
+     * String actual = new TmlElkSql(
+     *         new TmlElkThread(
+     *                 tmlElk,
+     *                 new TmlThread()
+     *         ),
+     *         new TmlSql(200, "OK", "Okay")
+     * ).create();
+     * } </pre>
+     *
+     * If {@link #tmlElk} is null, then {@link #tmlElk} creating empty JSON object.
+     * If {@link #tml} is null, then the following will be added to the created {@link #tmlElk}:
+     * <pre> {@code
+     * {
+     *   "sql_error_code": null,
+     *   "sql_state": null,
+     *   "sql_message": null
+     * }
+     * } </pre>
+     *
+     * @return ELK log with SQL information.
+     */
     @Override
     public String create() {
         if (tmlElk == null) {
