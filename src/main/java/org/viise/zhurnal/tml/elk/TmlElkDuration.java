@@ -20,16 +20,66 @@ import org.viise.zhurnal.Template;
 import org.viise.zhurnal.tml.TmlDurationJson;
 import org.json.JSONObject;
 
+/**
+ * Duration ELK Template.
+ * Added in main ELK log ({@link #tmlElk}) :
+ * <pre> {@code
+ * {
+ *   "duration_unit": "MILLISECONDS",
+ *   "duration_value": 200
+ * }
+ * } </pre>
+ */
 public final class TmlElkDuration implements Template {
 
     private final Template tmlElk;
     private final Template tml;
 
+    /**
+     * Ctor.
+     *
+     * @param tmlElk The main template, which will be supplemented by {@link #tml}. {@link #tmlElk} is immutable.
+     * @param tml    Template to be used to generate Duration ELK log. It's recommended to use
+     *               {@link org.viise.zhurnal.tml.TmlDuration} implementations.
+     */
     public TmlElkDuration(Template tmlElk, Template tml) {
         this.tmlElk = tmlElk;
         this.tml = tml;
     }
 
+    /**
+     * Creating ELK log with Duration information. For example:
+     * <pre> {@code
+     * Template tmlElk = new TmlElkStd(new TmlInfo("Hello, {}!", "log"));
+     *
+     * String actual = new TmlElkDuration(
+     *         tmlElk,
+     *         new TmlDuration(200L)
+     * ).create();
+     * } </pre>
+     * Or:
+     * <pre> {@code
+     * Template tmlElk = new TmlElkStd(new TmlInfo("Hello, {}!", "log"));
+     * String actual = new TmlElkDuration(
+     *         new TmlElkThread(
+     *                 tmlElk,
+     *                 new TmlThread()
+     *         ),
+     *         new TmlDuration(200L)
+     * ).create();
+     * } </pre>
+     *
+     * If {@link #tmlElk} is null, then {@link #tmlElk} creating empty JSON object.
+     * If {@link #tml} is null, then the following will be added to the created {@link #tmlElk}:
+     * <pre> {@code
+     * {
+     *   "duration_unit": null,
+     *   "duration_value": null
+     * }
+     * } </pre>
+     *
+     * @return ELK log with Duration information.
+     */
     @Override
     public String create() {
         if (tmlElk == null) {

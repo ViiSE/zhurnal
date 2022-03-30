@@ -16,20 +16,72 @@
 
 package org.viise.zhurnal.tml.elk;
 
+import org.json.JSONObject;
 import org.viise.zhurnal.Template;
 import org.viise.zhurnal.tml.TmlHttpJson;
-import org.json.JSONObject;
 
+/**
+ * HTTP ELK Template.
+ * Added in main ELK log ({@link #tmlElk}) :
+ * <pre> {@code
+ * {
+ *   "http_method": "GET",
+ *   "http_endpoint": "/users/1",
+ *   "http_status": "200 OK"
+ * }
+ * } </pre>
+ */
 public final class TmlElkHttp implements Template {
 
     private final Template tmlElk;
     private final Template tml;
 
+    /**
+     * Ctor.
+     *
+     * @param tmlElk The main template, which will be supplemented by {@link #tml}. {@link #tmlElk} is immutable.
+     * @param tml    Template to be used to generate HTTP ELK log. It's recommended to use
+     *               {@link org.viise.zhurnal.tml.TmlHttp} implementations.
+     */
     public TmlElkHttp(Template tmlElk, Template tml) {
         this.tmlElk = tmlElk;
         this.tml = tml;
     }
 
+    /**
+     * Creating ELK log with HTTP information. For example:
+     * <pre> {@code
+     * Template tmlElk = new TmlElkStd(new TmlInfo("Hello, {}!", "log"));
+     *
+     * String actual = new TmlElkHttp(
+     *         tmlElk,
+     *         new TmlHttp(HttpMethod.GET, "/users/1", HttpStatus.OK)
+     * ).create();
+     * } </pre>
+     * Or:
+     * <pre> {@code
+     * Template tmlElk = new TmlElkStd(new TmlInfo("Hello, {}!", "log"));
+     * String actual = new TmlElkHttp(
+     *         new TmlElkThread(
+     *                 tmlElk,
+     *                 new TmlThread()
+     *         ),
+     *         new TmlHttp(HttpMethod.GET, "/users/1", HttpStatus.OK)
+     * ).create();
+     * } </pre>
+     *
+     * If {@link #tmlElk} is null, then {@link #tmlElk} creating empty JSON object.
+     * If {@link #tml} is null, then the following will be added to the created {@link #tmlElk}:
+     * <pre> {@code
+     * {
+     *   "http_method": null,
+     *   "http_endpoint": null,
+     *   "http_status": null
+     * }
+     * } </pre>
+     *
+     * @return ELK log with HTTP information.
+     */
     @Override
     public String create() {
         if (tmlElk == null) {

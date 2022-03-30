@@ -20,16 +20,70 @@ import org.viise.zhurnal.Template;
 import org.viise.zhurnal.tml.TmlThreadJson;
 import org.json.JSONObject;
 
+/**
+ * Thread ELK Template.
+ * Added in main ELK log ({@link #tmlElk}) :
+ * <pre> {@code
+ * {
+ *   "thread_id": 1,
+ *   "thread_name": "main",
+ *   "thread_is_alive": true,
+ *   "thread_is_interrupted": false
+ * }
+ * } </pre>
+ */
 public final class TmlElkThread implements Template {
 
     private final Template tmlElk;
     private final Template tml;
 
+    /**
+     * Ctor.
+     *
+     * @param tmlElk The main template, which will be supplemented by {@link #tml}. {@link #tmlElk} is immutable.
+     * @param tml    Template to be used to generate Thread ELK log. It's recommended to use
+     *               {@link org.viise.zhurnal.tml.TmlThread} implementations.
+     */
     public TmlElkThread(Template tmlElk, Template tml) {
         this.tmlElk = tmlElk;
         this.tml = tml;
     }
 
+    /**
+     * Creating ELK log with Thread information. For example:
+     * <pre> {@code
+     * Template tmlElk = new TmlElkStd(new TmlInfo("Hello, {}!", "log"));
+     *
+     * String actual = new TmlElkThread(
+     *         tmlElk,
+     *         new TmlThread()
+     * ).create();
+     * } </pre>
+     * Or:
+     * <pre> {@code
+     * Template tmlElk = new TmlElkStd(new TmlInfo("Hello, {}!", "log"));
+     * String actual = new TmlElkThread(
+     *         new TmlElkDuration(
+     *                 tmlElk,
+     *                 new TmlDuration(200L)
+     *         ),
+     *         new TmlThread()
+     * ).create();
+     * } </pre>
+     *
+     * If {@link #tmlElk} is null, then {@link #tmlElk} creating empty JSON object.
+     * If {@link #tml} is null, then the following will be added to the created {@link #tmlElk}:
+     * <pre> {@code
+     * {
+     *   "thread_id": null,
+     *   "thread_name": null,
+     *   "thread_is_alive": null,
+     *   "thread_is_interrupted": null
+     * }
+     * } </pre>
+     *
+     * @return ELK log with Thread information.
+     */
     @Override
     public String create() {
         if (tmlElk == null) {
