@@ -102,7 +102,7 @@ public final class TmlEntry implements TemplateLeveled {
      * @param lgClass Classname of template.
      * @param lvl {@link Level} of template.
      * @param tmlTimestamp Timestamp of template.
-     * @param tmls The array of templates.
+     * @param tmls The list of templates.
      */
     public TmlEntry(Class<?> lgClass, Level lvl, Template tmlTimestamp, List<Template> tmls) {
         this(lgClass, true, lvl, tmlTimestamp, tmls);
@@ -112,7 +112,7 @@ public final class TmlEntry implements TemplateLeveled {
      * Ctro 5. {@link #useFullName} is {@code true}. {@link #tmlTimestamp} is now.
      * @param lgClass Classname of template.
      * @param lvl {@link Level} of template.
-     * @param tmls The array of templates.
+     * @param tmls The list of templates.
      */
     public TmlEntry(Class<?> lgClass, Level lvl, List<Template> tmls) {
         this(lgClass, true, lvl, new TmlTimestamp(), tmls);
@@ -122,7 +122,7 @@ public final class TmlEntry implements TemplateLeveled {
      * Ctor 6. {@link #useFullName} is {@code true}. {@link #tmlTimestamp} is now. {@link #lgClass} is
      * {@code TmlEntry.class}.
      * @param lvl {@link Level} of template.
-     * @param tmls The array of templates.
+     * @param tmls The list of templates.
      */
     public TmlEntry(Level lvl, List<Template> tmls) {
         this(TmlEntry.class, true, lvl, new TmlTimestamp(), tmls);
@@ -132,7 +132,7 @@ public final class TmlEntry implements TemplateLeveled {
      * Ctor 7. {@link #useFullName} is {@code true}. {@link #lgClass} is {@code TmlEntry.class}.
      * @param lvl {@link Level} of template.
      * @param tmlTimestamp Timestamp of template.
-     * @param tmls The array of templates.
+     * @param tmls The list of templates.
      */
     public TmlEntry(Level lvl, Template tmlTimestamp, List<Template> tmls) {
         this(TmlEntry.class, true, lvl, tmlTimestamp, tmls);
