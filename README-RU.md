@@ -18,9 +18,9 @@ implementation 'org.viise.zhurnal:zhurnal:1.0.0'
 ```
 
 ## Для чего нужна эта библиотека?
-В мире Java существуют основные библиотеки логирования: [logback](), [log4j](), [slf4j](). Принцип действия у всех 
-одинаковый. Для того, чтобы начать логировать, необходимо в классе определить объект класса лога. Вот пример лога 
-`slf4j`:
+В мире Java существуют основные библиотеки логирования: [logback](https://logback.qos.ch), [log4j](https://logging.apache.org/log4j/2.x/), [slf4j](https://www.slf4j.org). 
+Принцип действия у всех одинаковый. Для того, чтобы начать логировать, необходимо в классе определить объект класса лога.
+Вот пример лога `slf4j`:
 
 ```java
 private static final Logger log = LoggerFactory.getLogger(MyClass.java);
