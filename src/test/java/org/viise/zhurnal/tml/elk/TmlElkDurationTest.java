@@ -34,8 +34,6 @@ public class TmlElkDurationTest {
                 new TmlDuration(200L)
         ).create();
 
-        System.out.println(actual);
-
         assertTrue(actual.contains("\"level\":\"INFO\""));
         assertTrue(actual.contains("\"logger_name\":\"org.viise.zhurnal.tml.TmlInfo\""));
         assertTrue(actual.contains("\"message\":\"Hello, log!\""));
