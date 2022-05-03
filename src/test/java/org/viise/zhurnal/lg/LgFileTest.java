@@ -29,11 +29,11 @@ import static org.testng.Assert.assertTrue;
 
 public class LgFileTest {
 
-    private final String fName = System.getProperty("user.dir") + File.separator
-            + "src" + File.separator
-            + "test" + File.separator
-            + "resources" + File.separator
-            + "lg.log";
+    private final String fName = String.format(
+            "%s%s",
+            System.getProperty("user.dir"),
+            "/src/test/resources/lg.log"
+    );
 
     @Test
     public void print() throws IOException {
