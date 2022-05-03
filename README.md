@@ -1,3 +1,10 @@
+[![Zhurnal-CI](https://github.com/ViiSE/zhurnal/actions/workflows/main.yml/badge.svg)](https://github.com/ViiSE/zhurnal/actions/workflows/main.yml)
+[![codecov](https://codecov.io/gh/viise/zhurnal/branch/main/graph/badge.svg?token=0GPP4HUXXR)](https://codecov.io/gh/viise/zhurnal)
+
+[![Stena-CI Deploy](https://github.com/ViiSE/zhurnal/actions/workflows/deploy.yml/badge.svg)](https://github.com/ViiSE/zhurnal/actions/workflows/deploy.yml)
+[![Maven Central](https://img.shields.io/maven-central/v/com.github.viise.zhurnal/zhurnal.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.viise.zhurnal/zhurnal/)
+
+
 # zhurnal
 Micro object-oriented library for logging
 
