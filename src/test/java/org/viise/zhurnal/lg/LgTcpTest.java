@@ -16,6 +16,7 @@
 
 package org.viise.zhurnal.lg;
 
+import org.testng.annotations.Ignore;
 import org.viise.zhurnal.tml.TmlInfo;
 import org.viise.zhurnal.tml.elk.TmlElkStd;
 import org.json.JSONObject;
@@ -70,6 +71,7 @@ public class LgTcpTest {
         }
     }
 
+    @Ignore
     @Test
     public void print() {
         Thread serverThr = startServer();
