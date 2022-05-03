@@ -3,7 +3,7 @@ name: Zhurnal-CI Deploy
 on:
   push:
     branches: [ main ]
-    paths-ignore: [ '**/README.md', '.github/workflows/main.yml', '.github/workflows/deploy.yml' ]
+    paths-ignore: [ '**/README.md', '**/README-RU.md', '.github/workflows/main.yml', '.github/workflows/deploy.yml' ]
 
 jobs:
   build:
