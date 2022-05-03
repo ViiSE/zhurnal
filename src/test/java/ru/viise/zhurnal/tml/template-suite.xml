@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!--
+  ~ Copyright 2022 ViiSE
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Template">
+    <test name="TemplateTest">
+        <classes>
+            <class name="ru.viise.zhurnal.tml.TmlBasicTest" />
+            <class name="ru.viise.zhurnal.tml.TmlChildTest" />
+            <class name="ru.viise.zhurnal.tml.TmlClassJsonTest" />
+            <class name="ru.viise.zhurnal.tml.TmlClassTest" />
+            <class name="ru.viise.zhurnal.tml.TmlTimestampJsonTest" />
+            <class name="ru.viise.zhurnal.tml.TmlTimestampTest" />
+            <class name="ru.viise.zhurnal.tml.TmlDurationJsonTest" />
+            <class name="ru.viise.zhurnal.tml.TmlDurationTest" />
+            <class name="ru.viise.zhurnal.tml.TmlHttpTest" />
+            <class name="ru.viise.zhurnal.tml.TmlHttpJsonTest" />
+            <class name="ru.viise.zhurnal.tml.TmlJsonTest" />
+            <class name="ru.viise.zhurnal.tml.TmlLevelJsonTest" />
+            <class name="ru.viise.zhurnal.tml.TmlMsgTest" />
+            <class name="ru.viise.zhurnal.tml.TmlMsgJsonTest" />
+            <class name="ru.viise.zhurnal.tml.TmlRootTest" />
+            <class name="ru.viise.zhurnal.tml.TmlSqlJsonTest" />
+            <class name="ru.viise.zhurnal.tml.TmlSqlTest" />
+            <class name="ru.viise.zhurnal.tml.TmlThreadJsonTest" />
+            <class name="ru.viise.zhurnal.tml.TmlThreadTest" />
+            <class name="ru.viise.zhurnal.tml.TmlThrowableJsonTest" />
+            <class name="ru.viise.zhurnal.tml.TmlThrowableTest" />
+            <class name="ru.viise.zhurnal.tml.TmlDebugTest" />
+            <class name="ru.viise.zhurnal.tml.TmlErrorTest" />
+            <class name="ru.viise.zhurnal.tml.TmlInfoTest" />
+            <class name="ru.viise.zhurnal.tml.TmlTraceTest" />
+            <class name="ru.viise.zhurnal.tml.TmlWarnTest" />
+            <class name="ru.viise.zhurnal.tml.TmlEntryTest" />
+            <class name="ru.viise.zhurnal.tml.TmlLevelTest" />
+        </classes>
+    </test>
+    <test name="TemplateELKTest">
+        <classes>
+            <class name="ru.viise.zhurnal.tml.elk.TmlElkDurationTest" />
+            <class name="ru.viise.zhurnal.tml.elk.TmlElkHttpTest" />
+            <class name="ru.viise.zhurnal.tml.elk.TmlElkSqlTest" />
+            <class name="ru.viise.zhurnal.tml.elk.TmlElkStdTest" />
+            <class name="ru.viise.zhurnal.tml.elk.TmlElkThreadTest" />
+            <class name="ru.viise.zhurnal.tml.elk.TmlElkThrowableTest" />
+        </classes>
+    </test>
+</suite>

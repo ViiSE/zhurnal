@@ -85,9 +85,9 @@ This interface creates a final log that will be output to the source.
 ## Examples
 Let's define an object of the `LgConsole` class that will output the log to the standard output stream:
 ```java
-import org.viise.zhurnal.Log;
-import org.viise.zhurnal.Template;
-import org.viise.zhurnal.lg.LgConsole;
+import ru.viise.zhurnal.Log;
+import ru.viise.zhurnal.Template;
+import ru.viise.zhurnal.lg.LgConsole;
 
 public class ExampleClass {
 
@@ -98,10 +98,10 @@ public class ExampleClass {
 ```
 To display the `INFO` level log, pass an object of the `TmlInfo` class to the `print` method:
 ```java
-import org.viise.zhurnal.Log;
-import org.viise.zhurnal.Template;
-import org.viise.zhurnal.lg.LgConsole;
-import org.viise.zhurnal.tml.TmlInfo;
+import ru.viise.zhurnal.Log;
+import ru.viise.zhurnal.Template;
+import ru.viise.zhurnal.lg.LgConsole;
+import ru.viise.zhurnal.tml.TmlInfo;
 
 public class ExampleClass {
 
@@ -115,14 +115,14 @@ public class ExampleClass {
 ```
 As a result, we get the following log:
 
-`[LEVEL INFO] [TIMESTAMP 2022-04-22T23:31:01.581] [CLASS org.viise.zhurnal.tml.TmlInfo] [MESSAGE Hello, log!]`
+`[LEVEL INFO] [TIMESTAMP 2022-04-22T23:31:01.581] [CLASS ru.viise.zhurnal.tml.TmlInfo] [MESSAGE Hello, log!]`
 
 To define `WARN`, `ERROR`, `TRACE`, `DEBUG` level logs, use `TmlWarn`, `TmlError`, `TmlTrace`, `TmlDebug` respectively:
 ```java
-import org.viise.zhurnal.Log;
-import org.viise.zhurnal.Template;
-import org.viise.zhurnal.lg.LgConsole;
-import org.viise.zhurnal.tml.*;
+import ru.viise.zhurnal.Log;
+import ru.viise.zhurnal.Template;
+import ru.viise.zhurnal.lg.LgConsole;
+import ru.viise.zhurnal.tml.*;
 
 public class ExampleClass {
 
@@ -143,12 +143,12 @@ public class ExampleClass {
 ```
 To limit logs by level, use `LgLimited`:
 ```java
-import org.viise.zhurnal.Level;
-import org.viise.zhurnal.Log;
-import org.viise.zhurnal.Template;
-import org.viise.zhurnal.TemplateLeveled;
-import org.viise.zhurnal.lg.*;
-import org.viise.zhurnal.tml.*;
+import ru.viise.zhurnal.Level;
+import ru.viise.zhurnal.Log;
+import ru.viise.zhurnal.Template;
+import ru.viise.zhurnal.TemplateLeveled;
+import ru.viise.zhurnal.lg.*;
+import ru.viise.zhurnal.tml.*;
 
 public class ExampleClass {
 
@@ -168,11 +168,11 @@ In this case, the `WARN` level log will not be printed to standard output.
 
 You can define your `Template`. For example:
 ```java
-import org.viise.zhurnal.Level;
-import org.viise.zhurnal.Log;
-import org.viise.zhurnal.Template;
-import org.viise.zhurnal.lg.*;
-import org.viise.zhurnal.tml.*;
+import ru.viise.zhurnal.Level;
+import ru.viise.zhurnal.Log;
+import ru.viise.zhurnal.Template;
+import ru.viise.zhurnal.lg.*;
+import ru.viise.zhurnal.tml.*;
 
 public class ExampleClass {
 
@@ -208,10 +208,10 @@ As a result, we get:
 The standard `TemplateLeveled` interface templates support concatenation of other templates:
 
 ```java
-import org.viise.zhurnal.Log;
-import org.viise.zhurnal.Template;
-import org.viise.zhurnal.lg.LgConsole;
-import org.viise.zhurnal.tml.*;
+import ru.viise.zhurnal.Log;
+import ru.viise.zhurnal.Template;
+import ru.viise.zhurnal.lg.LgConsole;
+import ru.viise.zhurnal.tml.*;
 
 public class ExampleClass {
 
@@ -230,20 +230,20 @@ public class ExampleClass {
 ```
 We get this log:
 
-`[LEVEL INFO] [TIMESTAMP 2022-04-23T00:32:56.382] [CLASS org.viise.zhurnal.tml.ExampleClass] [MESSAGE Hello, world!] [DURATION <VALUE:200> <UNIT:MILLISECONDS>] [SQL <ERROR_CODE:0> <SQL_STATE:OK> <MESSAGE:Select: done!>]`
+`[LEVEL INFO] [TIMESTAMP 2022-04-23T00:32:56.382] [CLASS ru.viise.zhurnal.tml.ExampleClass] [MESSAGE Hello, world!] [DURATION <VALUE:200> <UNIT:MILLISECONDS>] [SQL <ERROR_CODE:0> <SQL_STATE:OK> <MESSAGE:Select: done!>]`
 
 ## ELK logs
-`zhurnal` support ELK logs. The required templates are contained in the `org.viise.zhurnal.tml.elk` package.
+`zhurnal` support ELK logs. The required templates are contained in the `ru.viise.zhurnal.tml.elk` package.
 
 To define a standard ELK log, use `TmlElkStd`:
 
 ```java
-import org.viise.zhurnal.Level;
-import org.viise.zhurnal.Log;
-import org.viise.zhurnal.Template;
-import org.viise.zhurnal.lg.*;
-import org.viise.zhurnal.tml.*;
-import org.viise.zhurnal.tml.elk.TmlElkStd;
+import ru.viise.zhurnal.Level;
+import ru.viise.zhurnal.Log;
+import ru.viise.zhurnal.Template;
+import ru.viise.zhurnal.lg.*;
+import ru.viise.zhurnal.tml.*;
+import ru.viise.zhurnal.tml.elk.TmlElkStd;
 
 public class ExampleClass {
 
@@ -258,20 +258,20 @@ The end result is a log like this:
 {
   "level": "INFO",
   "thread_name": "main",
-  "logger_name": "org.viise.zhurnal.tml.TmlInfo",
+  "logger_name": "ru.viise.zhurnal.tml.TmlInfo",
   "message": "Hello, world!",
   "timestamp": "2022-04-23T00:00:20.069"
 }
 ```
 You can also, for example, add information about `HTTP` to the log:
 ```java
-import org.viise.zhurnal.HttpStatus;
-import org.viise.zhurnal.Level;
-import org.viise.zhurnal.Log;
-import org.viise.zhurnal.Template;
-import org.viise.zhurnal.lg.*;
-import org.viise.zhurnal.tml.*;
-import org.viise.zhurnal.tml.elk.*;
+import ru.viise.zhurnal.HttpStatus;
+import ru.viise.zhurnal.Level;
+import ru.viise.zhurnal.Log;
+import ru.viise.zhurnal.Template;
+import ru.viise.zhurnal.lg.*;
+import ru.viise.zhurnal.tml.*;
+import ru.viise.zhurnal.tml.elk.*;
 
 public class ExampleClass {
 
@@ -294,20 +294,20 @@ The end result is a log like this:
   "level": "INFO",
   "thread_name": "main",
   "http_status": "200 OK",
-  "logger_name": "org.viise.zhurnal.tml.TmlInfo",
+  "logger_name": "ru.viise.zhurnal.tml.TmlInfo",
   "message": "Hello, world!",
   "timestamp": "2022-04-23T00:12:15.839"
 }
 ```
 You can add another stack trace:
 ```java
-import org.viise.zhurnal.HttpStatus;
-import org.viise.zhurnal.Level;
-import org.viise.zhurnal.Log;
-import org.viise.zhurnal.Template;
-import org.viise.zhurnal.lg.*;
-import org.viise.zhurnal.tml.*;
-import org.viise.zhurnal.tml.elk.*;
+import ru.viise.zhurnal.HttpStatus;
+import ru.viise.zhurnal.Level;
+import ru.viise.zhurnal.Log;
+import ru.viise.zhurnal.Template;
+import ru.viise.zhurnal.lg.*;
+import ru.viise.zhurnal.tml.*;
+import ru.viise.zhurnal.tml.elk.*;
 
 public class ExampleClass {
 
@@ -335,8 +335,8 @@ Result:
   "level": "INFO",
   "thread_name": "main",
   "http_status": "500 Internal Server Error",
-  "logger_name": "org.viise.zhurnal.tml.TmlInfo",
-  "stack_trace": "java.lang.Throwable\n\tat org.viise.zhurnal.tml.ExampleClass.exampleMethod(ExampleClass.java:11)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)...",
+  "logger_name": "ru.viise.zhurnal.tml.TmlInfo",
+  "stack_trace": "java.lang.Throwable\n\tat ru.viise.zhurnal.tml.ExampleClass.exampleMethod(ExampleClass.java:11)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)...",
   "message": "Hello, log!",
   "throwable_message": "null",
   "timestamp": "2022-04-23T00:15:23.657"
