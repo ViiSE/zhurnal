@@ -6,7 +6,7 @@
 #### С использованием Maven
 ```xml
 <dependency>
-    <groupId>org.viise.zhurnal</groupId>
+    <groupId>ru.viise.zhurnal</groupId>
     <artifactId>zhurnal</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -14,7 +14,7 @@
 
 #### С использованием Gradle
 ```groovy
-implementation 'org.viise.zhurnal:zhurnal:1.0.0'
+implementation 'ru.viise.zhurnal:zhurnal:1.0.0'
 ```
 
 ## Для чего нужна эта библиотека?
