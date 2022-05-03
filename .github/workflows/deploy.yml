@@ -1,0 +1,31 @@
+name: Zhurnal-CI Deploy
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore: [ '**/README.md', '.github/workflows/main.yml', '.github/workflows/deploy.yml' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set Up
+      uses: actions/setup-java@v2
+      with:
+        java-version: '8'
+        distribution: 'liberica'
+        cache: maven
+    - name: Import GPG
+      uses: crazy-max/ghaction-import-gpg@v1
+      env:
+        GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+        PASSPHRASE: ${{ secrets.GPG_PASS }}
+    - name: Deploy to Nexus
+      run: mvn --settings .m2/settings.xml --file pom.xml -Possrh,deploy-artifact -Djavadoc.home=$JAVA_HOME/bin/javadoc -Dsona.uname=$SONA_UNAME -Dsona.pass=$SONA_PASS -Dgpg.kname=$GPG_KNAME -Dgpg.pass=$GPG_PASS -DskipTests=true deploy
+      env:
+        SONA_UNAME: ${{ secrets.SONA_UNAME }}
+        SONA_PASS: ${{ secrets.SONA_PASS }}
+        GPG_KNAME: ${{ secrets.GPG_KNAME }}
+        GPG_PASS: ${{ secrets.GPG_PASS }}

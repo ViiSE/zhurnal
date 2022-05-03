@@ -1,0 +1,24 @@
+name: Zhurnal-CI
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set Up
+      uses: actions/setup-java@v2
+      with:
+        java-version: '8'
+        distribution: 'liberica'
+        cache: maven
+    - name: Build and Test
+      run: mvn clean package --file pom.xml
+    - name: Code Coverage
+      uses: codecov/codecov-action@v2.1.0
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
