@@ -16,6 +16,7 @@
 
 package org.viise.zhurnal.lg;
 
+import org.testng.annotations.Ignore;
 import org.viise.zhurnal.tml.TmlInfo;
 import org.viise.zhurnal.tml.elk.TmlElkStd;
 import org.json.JSONObject;
@@ -34,7 +35,7 @@ public class LgTcpTest {
     private Thread startServer() {
         Thread thr = new Thread(() -> {
             try (
-                    ServerSocket serverSock = new ServerSocket(9999);
+                    ServerSocket serverSock = new ServerSocket(10000);
                     Socket clientSock = serverSock.accept()
             ) {
                 try (
@@ -70,13 +71,14 @@ public class LgTcpTest {
         }
     }
 
+    @Ignore
     @Test
     public void print() {
         Thread serverThr = startServer();
 
         new LgTcp(
                 "localhost",
-                9999
+                10000
         ).print(
                 new TmlElkStd(
                         new TmlInfo("Hello, {}!", "log")
@@ -99,7 +101,7 @@ public class LgTcpTest {
     }
 
     @Test(expectedExceptions = RuntimeException.class)
-    public void print_wringPort() {
+    public void print_wrongPort() {
         new LgTcp(
                 "localhost",
                 99999
