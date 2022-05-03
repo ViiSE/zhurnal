@@ -26,7 +26,7 @@ implementation 'ru.viise.zhurnal:zhurnal:1.0.0'
 private static final Logger log = LoggerFactory.getLogger(MyClass.java);
 ```
 
-Библиотека [lombok]() упрощает написание, достаточно определить аннотацию `@Slf4j` над логируемым классом:
+Библиотека [lombok](https://projectlombok.org) упрощает написание, достаточно определить аннотацию `@Slf4j` над логируемым классом:
 ```java
 @Slf4j
 public class MyClass {
