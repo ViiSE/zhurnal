@@ -33,7 +33,7 @@ the log class in the destination class. Here is an example `slf4j` log:
 private static final Logger log = LoggerFactory.getLogger(MyClass.java);
 ```
 
-The [lombok]() library simplifies writing, just define the `@Slf4j` annotation on the logged class:
+The [lombok](https://projectlombok.org) library simplifies writing, just define the `@Slf4j` annotation on the logged class:
 ```java
 @Slf4j
 public class MyClass {
