@@ -36,8 +36,6 @@ public class TmlElkHttpTest {
                 new TmlHttp(HttpMethod.GET, "/users/1", HttpStatus.OK)
         ).create();
 
-        System.out.println(actual);
-
         assertTrue(actual.contains("\"level\":\"INFO\""));
         assertTrue(actual.contains("\"logger_name\":\"org.viise.zhurnal.tml.TmlInfo\""));
         assertTrue(actual.contains("\"message\":\"Hello, log!\""));

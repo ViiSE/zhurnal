@@ -32,7 +32,6 @@ public class TmlThrowableJsonTest {
         String actual = new TmlThrowableJson(new TmlThrowable(new Throwable())).create();
         assertTrue(actual.contains("\"message\""));
         assertTrue(actual.contains("\"stack_trace\""));
-        System.out.println(actual);
     }
 
     @Test

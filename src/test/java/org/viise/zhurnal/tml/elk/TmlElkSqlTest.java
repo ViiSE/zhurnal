@@ -34,8 +34,6 @@ public class TmlElkSqlTest {
                 new TmlSql(200, "OK", "Okay")
         ).create();
 
-        System.out.println(actual);
-
         assertTrue(actual.contains("\"level\":\"INFO\""));
         assertTrue(actual.contains("\"logger_name\":\"org.viise.zhurnal.tml.TmlInfo\""));
         assertTrue(actual.contains("\"message\":\"Hello, log!\""));
