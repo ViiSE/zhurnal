@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.viise.zhurnal</groupId>
+    <groupId>ru.viise.zhurnal</groupId>
     <artifactId>zhurnal</artifactId>
     <version>1.0.0</version>
 
@@ -173,7 +173,7 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/test/java/org/viise/zhurnal/zhurnal-suite.xml</suiteXmlFile>
+                        <suiteXmlFile>src/test/java/ru/viise/zhurnal/zhurnal-suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
